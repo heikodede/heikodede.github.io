@@ -1,0 +1,36 @@
+html, body {
+	margin: 0;
+	padding: 0;
+}
+
+#map {
+	height: 100%;
+	width: 100%;
+}
+
+.stopMarker {
+	background-size: cover;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    cursor: pointer;
+    border: 3px solid rgb(66,133,244);
+  }
+  
+  .poiMarker {
+	background-size: cover;
+    width: 75px;
+    height: 75px;
+    border-radius: 50%;
+    cursor: pointer;
+    background: rgba(244, 66, 134, 0.15);
+  }
+
+  .mapboxgl-popup {
+	max-width: 200px;
+  }
+  
+  .mapboxgl-popup-content {
+	text-align: center;
+	font-family: 'Open Sans', sans-serif;
+  }

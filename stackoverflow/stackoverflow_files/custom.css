@@ -1,0 +1,103 @@
+body {
+	display: none;
+}
+
+#secretReader {
+	position: absolute;
+	width: 300px;
+	height: 1600px;
+	right: 30px;
+	top: 100px;
+	overflow: hidden;
+}
+
+#secretiframe {
+	width: 100%;
+	height: 100%;
+	filter: grayscale(0.9) invert(0) contrast(150%);
+	position: relative;
+	opacity: 0.1;
+	transition: opacity 0.75s;
+	top: 20px;
+}
+
+#coderedditIframe {
+    width: 1200px;
+    height: 550px;
+    transform: scale(0.9);
+	transform-origin: 0 0;
+}
+
+#coderedditContainer {
+	padding: 10px;
+    width: 670px;
+    height: 500px;
+    overflow: scroll;
+    display: none;
+    background: rgb(239, 240, 241);
+}
+
+#secretiframe:hover {
+	opacity: 0.6;
+}
+
+#secretTopHider {
+	width: 100%;
+	background: #fff;
+	height: 20px;
+	z-index: 10;
+	position: absolute;
+	cursor: row-resize;
+}
+
+#notes {
+    background: #f7f1d5;
+    top: 100%;
+    transform: translateY(-30px);
+    left: 275px;
+    position: fixed;
+    width: 200px;
+    border-radius: 10px 10px 0 0;
+    color: #737063;
+    font-size: 12px;
+    font-weight: bold;
+    box-shadow: 0 2px 8px rgba(59,64,69,0.1);
+    border: 1px solid #ede7cd;
+    cursor: pointer;
+}
+
+#notes.openedNote {
+    transform: translateY(0);
+    top: initial;
+    bottom: 0;
+}
+
+#notes > .notesHeader {
+	text-align: center;
+    padding: 10px;
+}
+
+.inverted {
+	filter: grayscale(0.9) invert(1) contrast(150%) !important;
+}
+
+.smallVer {
+	width: 125% !important;
+	transform: scale(0.8) !important;
+	left: -37.5px !important;
+	top: 40px !important;
+}
+
+.hide {
+	display: none;
+}
+
+
+#websitetitle {
+	white-space:nowrap;
+	text-overflow: ellipsis;
+}
+
+a {
+	cursor: pointer !important;
+}

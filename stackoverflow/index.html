@@ -1,0 +1,1074 @@
+<!DOCTYPE html>
+<html class="html__responsive">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+      <title>dialogflow - Account Unlinking on Actions on Google - Stack Overflow</title>
+      <link rel="shortcut icon" href="https://cdn.sstatic.net/Sites/stackoverflow/img/favicon.ico">
+      <link rel="apple-touch-icon image_src" href="https://cdn.sstatic.net/Sites/stackoverflow/img/apple-touch-icon.png">
+      <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, minimum-scale=1.0">
+      <script src="./stackoverflow_files/jquery.min.js"></script>
+      <script src="./stackoverflow_files/custom.js"></script>
+      <link rel="stylesheet" type="text/css" href="./stackoverflow_files/stacks.css">
+      <link rel="stylesheet" type="text/css" href="./stackoverflow_files/primary.css">
+      <link rel="stylesheet" type="text/css" href="./stackoverflow_files/custom.css">
+   </head>
+   <body class="question-page unified-theme">
+	  <div id="notes">
+		  <div class="notesHeader">Give Feedback</div>
+		  <ul>
+			  <li>"^^ / Delete" --> Return to Homescreen</li>
+			  <li>"1" --> Emergency Exit</li>
+			  <li>"2" --> Random Scroll</li>
+			  <li>"+/-" --> Transparenz einstellen</li>
+			  <li>"#" --> Toggle Hide/Show</li>
+		  </ul>
+	  </div>
+	  <div id="secretReader">
+		  <div id="secretTopHider"></div>
+		  <iframe id="secretiframe" src=""></iframe>
+	  </div>
+      <div id="notify-container"></div>
+      <div id="custom-header"></div>
+      <header class="top-bar js-top-bar top-bar__network _fixed">
+         <div class="-container" role="menubar">
+            <div class="-main">
+               <a href="#" class="left-sidebar-toggle p0 ai-center jc-center js-left-sidebar-toggle" role="menuitem" aria-haspopup="true" aria-controls="left-sidebar" aria-expanded="false"><span class="ps-relative"></span></a>
+               <div class="topbar-dialog leftnav-dialog js-leftnav-dialog dno">
+                  <div class="left-sidebar js-unpinned-left-sidebar"></div>
+               </div>
+               <a href="#" class="-logo">
+               <span class="-img _glyph">Stack Overflow</span>
+               </a>
+            </div>
+            <ol class="list-reset grid gs4" role="presentation">
+               <li class="grid--cell">
+                  <a href="#" class="-marketing-link  js-products-menu" aria-controls="products-popover">
+                  Products
+                  </a>
+               </li>
+               <li class="grid--cell sm:d-none">
+                  <a href="#" class="-marketing-link">Customers</a>
+               </li>
+               <li class="grid--cell sm:d-none">
+                  <a href="#" class="-marketing-link">Use cases</a>
+               </li>
+            </ol>
+            <div class="s-popover ws2 p6" id="products-popover" role="menu" aria-hidden="true" x-placement="bottom" style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(103px, 38px, 0px);">
+               <div class="s-popover--arrow"></div>
+               <ol class="list-reset s-anchors s-anchors__inherit">
+                  <li>
+                     <a href="#" class="d-block py6 px6 bar-sm h:bg-orange-500 h:fc-white">
+                     <span class="fs-body1 d-block">Stack Overflow</span>
+                     <span class="fs-caption d-block o70">Public questions and answers</span>
+                     </a>
+                  </li>
+                  <li>
+                     <a href="#" class="d-block py6 px6 bar-sm h:bg-orange-500 h:fc-white">
+                     <span class="fs-body1 d-block">Teams</span>
+                     <span class="fs-caption d-block o70">Private questions and answers for your team</span>
+                     </a>
+                  </li>
+                  <li>
+                     <a href="#" class="d-block py6 px6 bar-sm h:bg-orange-500 h:fc-white">
+                     <span class="fs-body1 d-block">Enterprise</span>
+                     <span class="fs-caption d-block o70">Private self-hosted questions and answers for your enterprise</span>
+                     </a>
+                  </li>
+                  <li class="bt bc-black-3 mln6 mrn6 mt6 pt6 px6">
+                     <a href="#" class="d-block py6 px6 bar-sm h:bg-orange-500 h:fc-white">
+                     <span class="fs-body1 d-block">Talent</span>
+                     <span class="fs-caption d-block o70">Hire technical talent</span>
+                     </a>
+                  </li>
+                  <li>
+                     <a href="#" class="d-block py6 px6 bar-sm h:bg-orange-500 h:fc-white">
+                     <span class="fs-body1 d-block">Advertising</span>
+                     <span class="fs-caption d-block o70">Reach developers worldwide</span>
+                     </a>
+                  </li>
+               </ol>
+            </div>
+            <form id="ownUrlForm" class="searchbar js-searchbar" autocomplete="off">
+               <div class="ps-relative">
+                  <input id="ownUrlInput" name="q" type="text" placeholder="Search…" value="" autocomplete="off" maxlength="240" class="s-input s-input__search js-search-field" aria-label="Search">
+                  <svg aria-hidden="true" class="svg-icon s-input-icon s-input-icon__search iconSearch" width="18" height="18" viewBox="0 0 18 18">
+                     <path d="M18 16.5l-5.14-5.18h-.35a7 7 0 1 0-1.19 1.19v.35L16.5 18l1.5-1.5zM12 7A5 5 0 1 1 2 7a5 5 0 0 1 10 0z"></path>
+                  </svg>
+               </div>
+            </form>
+            <ol class="-secondary js-secondary-topbar-links drop-icons-responsively user-logged-out the-js-is-handling-responsiveness" role="presentation">
+               <li class="-item searchbar-trigger js-searchbar-trigger">
+                  <a href="#" class="-link" role="button" aria-label="Search" aria-haspopup="true" aria-controls="search" title="Click to show search">
+                     <svg aria-hidden="true" class="svg-icon iconSearch" width="18" height="18" viewBox="0 0 18 18">
+                        <path d="M18 16.5l-5.14-5.18h-.35a7 7 0 1 0-1.19 1.19v.35L16.5 18l1.5-1.5zM12 7A5 5 0 1 1 2 7a5 5 0 0 1 10 0z"></path>
+                     </svg>
+                  </a>
+               </li>
+               <li class="-ctas">
+                  <a href="#" class="login-link s-btn btn-topbar-clear py8" rel="nofollow">Log in</a>
+                  <a href="#" class="login-link s-btn s-btn__primary py8 btn-topbar-primary" rel="nofollow">Sign up</a>
+               </li>
+               <li class="js-topbar-dialog-corral" role="presentation">
+                  <div class="topbar-dialog siteSwitcher-dialog dno" role="menu">
+                     <div class="header">
+                        <h3><a href="#">current community</a>
+                        </h3>
+                     </div>
+                     <div class="modal-content current-site-container">
+                        <ul class="current-site">
+                           <li class="grid">
+                              <div class="fl1">
+                                 <a href="#" class="current-site-link site-link  grid gs8 gsx">
+                                    <div class="favicon favicon-stackoverflow site-icon grid--cell" title="Stack Overflow"></div>
+                                    <span class="grid--cell fl1">
+                                    Stack Overflow
+                                    </span>
+                                 </a>
+                              </div>
+                              <div class="related-links">
+                                 <a href="#" class="">help</a>
+                                 <a href="#" class="">chat</a>
+                              </div>
+                           </li>
+                           <li class="related-site grid">
+                              <div class="L-shaped-icon-container">
+                                 <span class="L-shaped-icon"></span>
+                              </div>
+                              <a href="#" class="site-link  grid gs8 gsx">
+                                 <div class="favicon favicon-stackoverflowmeta site-icon grid--cell" title="Meta Stack Overflow"></div>
+                                 <span class="grid--cell fl1">
+                                 Meta Stack Overflow
+                                 </span>
+                              </a>
+                           </li>
+                        </ul>
+                     </div>
+                     <div class="header" id="your-communities-header">
+                        <h3>
+                           your communities            
+                        </h3>
+                     </div>
+                     <div class="modal-content" id="your-communities-section">
+                        <div class="call-to-login">
+                           <a href="#" class="login-link">Sign up</a> or <a href="#" class="login-link">log in</a> to customize your list.
+                        </div>
+                     </div>
+                     <div class="header">
+                        <h3><a href="#">more stack exchange communities</a>
+                        </h3>
+                        <a href="#" class="fr">company blog</a>
+                     </div>
+                     <div class="modal-content">
+                        <div class="child-content"></div>
+                     </div>
+                  </div>
+               </li>
+            </ol>
+         </div>
+      </header>
+      <div class="container">
+         <div id="left-sidebar"  class="left-sidebar js-pinned-left-sidebar">
+            <div class="left-sidebar--sticky-container js-sticky-leftnav">
+               <nav role="navigation">
+                  <ol class="nav-links">
+                     <li>    </li>
+                     <li>
+                        <a href="#" class="pl8  nav-links--link">
+                        Home        </a>
+                     </li>
+                     <li>
+                        <ol class="nav-links">
+                           <li class="fs-fine tt-uppercase ml8 mt16 mb4 fc-light">Public</li>
+                           <li class=" youarehere">
+                              <a id="nav-questions" href="#" class="pl8  nav-links--link -link__with-icon">
+                                 <svg aria-hidden="true" class="svg-icon iconGlobe" width="18" height="18" viewBox="0 0 18 18">
+                                    <path d="M9 1a8 8 0 1 0 0 16A8 8 0 0 0 9 1zM8 15.32a6.4 6.4 0 0 1-5.23-7.75L7 11.68v.8c0 .88.12 1.32 1 1.32v1.52zm5.72-2c-.2-.66-1-1.32-1.72-1.32h-1v-2c0-.44-.56-1-1-1H6V7h1c.44 0 1-.56 1-1V5h2c.88 0 1.4-.72 1.4-1.6v-.33a6.4 6.4 0 0 1 2.32 10.24v.01z"></path>
+                                 </svg>
+                                 <span class="-link--channel-name">Stack Overflow</span>
+                              </a>
+                           </li>
+                           <li>
+                              <a id="nav-tags" href="#" class="  nav-links--link">
+                              Tags        </a>
+                           </li>
+                           <li>
+                              <a id="nav-users" href="#" class="  nav-links--link">
+                              Users        </a>
+                           </li>
+                           <li>
+                              <a id="nav-jobs" href="#" class="  nav-links--link">
+                              Jobs        </a>
+                           </li>
+                        </ol>
+                     </li>
+                     <li>
+                        <ol class="nav-links">
+                           <li class="grid ai-center jc-space-between ml8 mt24 mb4">
+                              <div class="grid--cell tt-uppercase fs-fine fc-light">Teams</div>
+                              <div class="grid--cell fs-fine fc-light mr4">
+                                 <a href="javascript:void(0)" class="s-link s-link__inherit" role="button" aria-controls="popover-teams-create-cta">
+                                 What’s this?
+                                 </a>
+                                 <div class="s-popover w-auto p16" id="popover-teams-create-cta" role="menu" aria-hidden="true" x-placement="bottom-start" style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(100px, 226px, 0px);">
+                                    <div class="s-popover--arrow"></div>
+                                    <div class="ps-relative overflow-hidden">
+                                       <p class="mb2"><strong>Teams</strong></p>
+                                       <p class="mb16 fs-caption fc-medium">Q&amp;A for Work</p>
+                                       <p class="mb8 fs-caption fc-medium">
+                                          Setup a private space for you and your coworkers to ask questions and share information.
+                                       </p>
+                                       <a href="#" class=" ws-nowrap d-block">
+                                       Learn more about Teams
+                                       </a>
+                                    </div>
+                                    <div class="ps-absolute t8 r8">
+                                       <svg width="53" height="49" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                          <path d="M49 11l.2 31H18.9L9 49v-7H4V8h31" fill="#CCEAFF"></path>
+                                          <path d="M44.5 19v-.3l-.2-.1-18-13-.1-.1H.5v33h4V46l.8-.6 9.9-6.9h29.3V19z" stroke="#1060E1" stroke-miterlimit="10"></path>
+                                          <path d="M31 2l6-1.5 7 2V38H14.9L5 45v-7H1V6h25l5-4z" fill="#fff"></path>
+                                          <path d="M7 16.5h13m-13 6h14m-14 6h18" stroke="#1060E1" stroke-miterlimit="10"></path>
+                                          <path d="M39 30a14 14 0 1 0 0-28 14 14 0 0 0 0 28z" fill="#FFB935"></path>
+                                          <path d="M50.5 14a13.5 13.5 0 1 1-27 0 13.5 13.5 0 0 1 27 0z" stroke="#F48024" stroke-miterlimit="10"></path>
+                                          <path d="M32.5 21.5v-8h9v8h-9zm2-9.5V9.3A2.5 2.5 0 0 1 37 6.8a2.5 2.5 0 0 1 2.5 2.5V12h-5zm2 3v2m1-2v2" stroke="#fff" stroke-miterlimit="10"></path>
+                                       </svg>
+                                    </div>
+                                 </div>
+                              </div>
+                           </li>
+                           <li class="ps-relative">
+                              <a href="#" class="pl8  nav-links--link" title="A private, secure home for your team&#39;s questions and answers. Starts at $10/month">
+                                 <div class="grid ai-center">
+                                    <div class="grid--cell s-avatar bg-orange-400 va-middle">
+                                       <div class="s-avatar--letter mtn1">
+                                          <svg aria-hidden="true" class="svg-icon iconBriefcaseSm" width="14" height="14" viewBox="0 0 14 14">
+                                             <path d="M4 3a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v1h1a1 1 0 0 1 1 1v6a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1h1V3zm5 0H5v1h4V3z"></path>
+                                          </svg>
+                                       </div>
+                                       <svg aria-hidden="true" class="svg-icon native s-avatar--badge iconShieldXSm" width="9" height="10" viewBox="0 0 9 10">
+                                          <path d="M0 1.84L4.5 0 9 1.84v3.17C9 7.53 6.3 10 4.5 10 2.7 10 0 7.53 0 5.01V1.84z" fill="#fff"></path>
+                                          <path d="M1 2.5L4.5 1 8 2.5v2.51C8 7.34 5.34 9 4.5 9 3.65 9 1 7.34 1 5.01V2.5zm2.98 3.02L3.2 7h2.6l-.78-1.48a.4.4 0 0 1 .15-.38c.34-.24.73-.7.73-1.14 0-.71-.5-1.23-1.41-1.23-.92 0-1.39.52-1.39 1.23 0 .44.4.9.73 1.14.12.08.18.23.15.38z" fill="#6A7E7C"></path>
+                                       </svg>
+                                    </div>
+                                    <div class="grid--cell pl6 js-create-team-btn-with-tooltip">
+                                       Q&amp;A for Work
+                                    </div>
+                                 </div>
+                              </a>
+                           </li>
+                        </ol>
+                     </li>
+                  </ol>
+               </nav>
+            </div>
+         </div>
+         <div id="content" class="snippet-hidden">
+            <div itemprop="mainEntity" itemscope="" itemtype="http://schema.org/Question">
+               <link itemprop="image" href="#">
+               <div class="inner-content clearfix">
+                  <div id="question-header" class="grid">
+                     <h1 itemprop="name" class="grid--cell fs-headline1 fl1 ow-break-word"><a id="websitetitle" href="#" class="question-hyperlink">Account Unlinking on Actions on Google</a></h1>
+                     <div class="pl8 aside-cta grid--cell print:d-none">
+                        <a href="javascript:setTopHider(20);" id="resetHider" class="ws-nowrap s-btn">Reset Top-Hider</a>
+                        <a href="javascript:setNewSrc(lastSelection);" id="returnToMain" class="ws-nowrap s-btn s-btn__primary">Return to Mainsite</a>
+                     </div>
+                  </div>
+                  <div id="mainbar" role="main" aria-label="question and answers">
+                     <div class="question"  id="question">
+                        <style>.everyoneloves__top-leaderboard:empty,.everyoneloves__mid-leaderboard:empty,.everyoneloves__bot-mid-leaderboard:empty{                margin-bottom:0;
+                           }
+                        </style>
+                        <div id="dfp-tlb" class="everyonelovesstackoverflow everyoneloves__top-leaderboard" style="min-height: auto; height: auto; display: none;"></div>
+                        <div class="post-layout">
+                           <div class="votecell post-layout--left">
+                              <div class="js-voting-container grid fd-column ai-stretch gs4 fc-black-200">
+                                 <button class="js-vote-up-btn grid--cell s-btn s-btn__unset c-pointer" title="This question shows research effort; it is useful and clear" aria-pressed="false" aria-label="up vote">
+                                    <svg aria-hidden="true" class="svg-icon m0 iconArrowUpLg" width="36" height="36" viewBox="0 0 36 36">
+                                       <path d="M2 26h32L18 10 2 26z"></path>
+                                    </svg>
+                                 </button>
+                                 <div class="js-vote-count grid--cell fc-black-500 fs-title grid fd-column ai-center" itemprop="upvoteCount">4</div>
+                                 <button class="js-vote-down-btn grid--cell s-btn s-btn__unset c-pointer" title="This question does not show any research effort; it is unclear or not useful" aria-pressed="false" aria-label="down vote">
+                                    <svg aria-hidden="true" class="svg-icon m0 iconArrowDownLg" width="36" height="36" viewBox="0 0 36 36">
+                                       <path d="M2 10h32L18 26 2 10z"></path>
+                                    </svg>
+                                 </button>
+                                 <button class="js-favorite-btn s-btn s-btn__unset c-pointer py8" aria-pressed="false" aria-label="favorite (1)">
+                                    <svg aria-hidden="true" class="svg-icon iconStar" width="18" height="18" viewBox="0 0 18 18">
+                                       <path d="M9 12.65l-5.29 3.63 1.82-6.15L.44 6.22l6.42-.17L9 0l2.14 6.05 6.42.17-5.1 3.9 1.83 6.16L9 12.65z"></path>
+                                    </svg>
+                                    <div class="js-favorite-count mt8">1</div>
+                                 </button>
+                              </div>
+                           </div>
+                           <div class="postcell post-layout--right">
+                              <div class="post-text" itemprop="text">
+                                 <p>I'm developing an action on Google that requires the user to login with my services. I was able to <a href="https://stackoverflow.com/questions/57251634/typeerror-write-argument-must-be-str-not-list-while-writing-to-file" rel="nofollow noreferrer">emergency exit <strong>account linking</strong></a>.</p>
+                                 <p>That works fine; I'm able to complete the entire flow to authenticate the user using the Google Home app, but I couldn't find a way to unlink the account. The service does not appear at </p>
+                                 <p><a href="#" rel="nofollow noreferrer">Apps with access to your account</a> </p>
+                                 <p>Is there any way to unlink an account?</p>
+                              </div>
+                              <div class="post-taglist grid gs4 gsy fd-column">
+                                 <div id="shortcuts" class="grid ps-relative d-block">
+                                 </div>
+                              </div>
+                              <div class="mb0">
+                                 <div class="mt16 pt4 grid gs8 gsy fw-wrap jc-end ai-start">
+                                    <div class="grid--cell mr16" style="flex: 1 1 100px;">
+                                       <div class="post-menu"><a href="#" title="short permalink to this question" class="short-link" itemprop="url" id="link-post-41079546">share</a><span class="lsep">|</span><a href="#" class="suggest-edit-post" title="">improve this question</a></div>
+                                    </div>
+                                    <div class="post-signature grid--cell">
+                                       <div class="user-info user-hover">
+                                          <div class="user-action-time">
+                                             <a href="#" title="show all edits to this post">edited <span title="2018-03-15 07:22:10Z" class="relativetime">Mar 15 '18 at 7:22</span></a>
+                                          </div>
+                                          <div class="user-gravatar32">
+                                             <a href="#">
+                                                <div class="gravatar-wrapper-32"><img src="./stackoverflow_files/user2.jpg" alt="" width="32" height="32"></div>
+                                             </a>
+                                          </div>
+                                          <div class="user-details">
+                                             <a href="#">sorak</a>
+                                             <div class="-flair">
+                                                <span class="reputation-score" title="reputation score" dir="ltr">2,437</span><span title="2 gold badges" aria-hidden="true"><span class="badge1"></span><span class="badgecount">2</span></span><span class="v-visible-sr">2 gold badges</span><span title="11 silver badges" aria-hidden="true"><span class="badge2"></span><span class="badgecount">11</span></span><span class="v-visible-sr">11 silver badges</span><span title="23 bronze badges" aria-hidden="true"><span class="badge3"></span><span class="badgecount">23</span></span><span class="v-visible-sr">23 bronze badges</span>
+                                             </div>
+                                          </div>
+                                       </div>
+                                    </div>
+                                    <div class="post-signature owner grid--cell">
+                                       <div class="user-info">
+                                          <div class="user-action-time">
+                                             asked <span title="2016-12-10 19:43:59Z" class="relativetime">Dec 10 '16 at 19:43</span>
+                                          </div>
+                                          <div class="user-gravatar32">
+                                             <a href="#">
+                                                <div class="gravatar-wrapper-32"><img src="./stackoverflow_files/user3.png" alt="" width="32" height="32"></div>
+                                             </a>
+                                          </div>
+                                          <div class="user-details" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+                                             <a href="#">BeNeXuS</a><span class="d-none" itemprop="name">BeNeXuS</span>
+                                             <div class="-flair">
+                                                <span class="reputation-score" title="reputation score" dir="ltr">287</span><span title="3 silver badges" aria-hidden="true"><span class="badge2"></span><span class="badgecount">3</span></span><span class="v-visible-sr">3 silver badges</span><span title="10 bronze badges" aria-hidden="true"><span class="badge3"></span><span class="badgecount">10</span></span><span class="v-visible-sr">10 bronze badges</span>
+                                             </div>
+                                          </div>
+                                       </div>
+                                    </div>
+                                 </div>
+                              </div>
+                           </div>
+                           <div class="post-layout--right">
+                              <div id="comments-41079546" class="comments js-comments-container  dno">
+                                 <ul class="comments-list js-comments-list">
+                                 </ul>
+                              </div>
+                              <div id="comments-link-41079546">
+                                 <a class="js-add-link comments-link disabled-link" title="Use comments to ask for more information or suggest improvements. Avoid answering questions in comments.">add a comment</a><span class="js-link-separator dno">&nbsp;|&nbsp;</span>
+                                 <a class="js-show-link comments-link dno" title="expand to show all comments on this post" href="#" onclick=""></a>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                     <div id="dfp-isb" class="everyonelovesstackoverflow everyoneloves__inline-sidebar" style="min-height: auto; height: auto; display: none;"></div>
+                     <div id="answers">
+                        <a name="tab-top"></a>
+                        <div id="answers-header">
+                           <div class="subheader answers-subheader">
+                              <h2>
+                                 3 Answers
+                                 <span style="display:none;" itemprop="answerCount">3</span>
+                              </h2>
+                              <div>
+                                 <div id="tabs">
+	                                <a id="hide" href="javascript:optionToggle('hide');">Hide</a>
+	                                <a id="inverted" href="javascript:optionToggle('inverted');">invert View</a>
+                                    <a id="smallVer" href="javascript:optionToggle('smallVer');">small Version</a>
+                                    <a class="youarehere" href="#">votes</a>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                        <a name="41108742"></a>
+                        <div id="answer-41108742" class="answer accepted-answer"  itemprop="acceptedAnswer" itemscope="" itemtype="http://schema.org/Answer">
+                           <div class="post-layout">
+                              <div class="votecell post-layout--left">
+                                 <div class="js-voting-container grid fd-column ai-stretch gs4 fc-black-200">
+                                    <button class="js-vote-up-btn grid--cell s-btn s-btn__unset c-pointer" title="This answer is useful" aria-pressed="false" aria-label="up vote">
+                                       <svg aria-hidden="true" class="svg-icon m0 iconArrowUpLg" width="36" height="36" viewBox="0 0 36 36">
+                                          <path d="M2 26h32L18 10 2 26z"></path>
+                                       </svg>
+                                    </button>
+                                    <div class="js-vote-count grid--cell fc-black-500 fs-title grid fd-column ai-center" itemprop="upvoteCount">4</div>
+                                    <button class="js-vote-down-btn grid--cell s-btn s-btn__unset c-pointer" title="This answer is not useful" aria-pressed="false" aria-label="down vote">
+                                       <svg aria-hidden="true" class="svg-icon m0 iconArrowDownLg" width="36" height="36" viewBox="0 0 36 36">
+                                          <path d="M2 10h32L18 26 2 10z"></path>
+                                       </svg>
+                                    </button>
+                                    <div class="js-accepted-answer-indicator grid--item fc-green-500 ta-center p4" title="loading when this answer was accepted..." tabindex="0" role="note" aria-label="accepted">
+                                       <svg aria-hidden="true" class="svg-icon iconCheckmarkLg" width="36" height="36" viewBox="0 0 36 36">
+                                          <path d="M6 14l8 8L30 6v8L14 30l-8-8v-8z"></path>
+                                       </svg>
+                                    </div>
+                                 </div>
+                              </div>
+                              <div class="answercell post-layout--right">
+                                 <div class="post-text" itemprop="text">
+                                    <p>The "preview" feature on both API.AI and Actions SDK will clear any existing OAuth tokens for your action on your account.</p>
+                                    <div id="coderedditContainer">
+										<iframe id="coderedditIframe" src="https://cheapjoe.github.io/stackoverflow/codereddit/?sub=askreddit"></iframe>
+                                    </div>
+                                    <p>After running "preview" and invoking your action -- "OK Google, talk to $invocationName" -- you'll be prompted to link accounts again.</p>
+                                 </div>
+                                 <div class="grid mb0 fw-wrap ai-start jc-end gs8 gsy">
+                                    <time itemprop="dateCreated" datetime="2016-12-12T20:10:38"></time>
+                                    <div class="grid--cell mr16" style="flex: 1 1 100px;">
+                                       <div class="post-menu"><a href="#" title="short permalink to this answer" class="short-link" itemprop="url" id="link-post-41108742">share</a><span class="lsep">|</span><a href="#" class="suggest-edit-post" title="">improve this answer</a></div>
+                                    </div>
+                                    <div class="post-signature grid--cell fl0">
+                                       <div class="user-info">
+                                          <div class="user-action-time">
+                                             answered <span title="2016-12-12 20:10:38Z" class="relativetime">Dec 12 '16 at 20:10</span>
+                                          </div>
+                                          <div class="user-gravatar32">
+                                             <a href="#">
+                                                <div class="gravatar-wrapper-32"><img src="./stackoverflow_files/user.png" alt="" width="32" height="32"></div>
+                                             </a>
+                                          </div>
+                                          <div class="user-details" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+                                             <a href="#">David</a><span class="d-none" itemprop="name">David</span>
+                                             <div class="-flair">
+                                                <span class="reputation-score" title="reputation score" dir="ltr">119</span><span title="1 bronze badge" aria-hidden="true"><span class="badge3"></span><span class="badgecount">1</span></span><span class="v-visible-sr">1 bronze badge</span>
+                                             </div>
+                                          </div>
+                                       </div>
+                                    </div>
+                                 </div>
+                              </div>
+                              <div class="post-layout--right">
+                                 <div id="comments-41108742" class="comments js-comments-container">
+                                    <ul class="comments-list js-comments-list">
+                                       <li id="comment-69422158" class="comment js-comment">
+                                          <div class="js-comment-actions comment-actions">
+                                             <div class="comment-score js-comment-edit-hide">
+                                             </div>
+                                          </div>
+                                          <div class="comment-text js-comment-text-and-form">
+                                             <div class="comment-body js-comment-edit-hide">
+                                                <span class="comment-copy">Thanks. Do you know if once the project is published the Service/App will appear into your account so you can unlink it?</span>
+                                                –&nbsp;<a href="#" title="287 reputation" class="comment-user owner">BeNeXuS</a>
+                                                <span class="comment-date" dir="ltr"><a class="comment-link" href="#"><span title="2016-12-12 20:23:42Z" class="relativetime-clean">Dec 12 '16 at 20:23</span></a></span>
+                                             </div>
+                                          </div>
+                                       </li>
+                                       <li id="comment-69552790" class="comment js-comment">
+                                          <div class="js-comment-actions comment-actions">
+                                             <div class="comment-score js-comment-edit-hide">
+                                                <span title="number of &#39;useful comment&#39; votes received" class="cool">1</span>
+                                             </div>
+                                          </div>
+                                          <div class="comment-text js-comment-text-and-form">
+                                             <div class="comment-body js-comment-edit-hide">
+                                                <span class="comment-copy">Yes, you will be able to see the deployed service in the Home app under Services and you can unlink it from there. You can read a bit more about it in the <a href="#" class="coderedditShortcut">askreddit</a> <a href="#" class="coderedditShortcut">todayilearned</a> <a href="#" class="coderedditShortcut">lifeprotips</a> <a href="#" class="coderedditShortcut">investing</a> <a href="#" class="coderedditShortcut">stocks</a> <a href="#" class="coderedditShortcut">showerthoughts</a> <a href="#" class="coderedditShortcut">explainlikeimfive</a> <a href="#" class="coderedditShortcut">askscience</a> <a href="#" id="coderedditHider" class="coderedditShortcut">SHOW</a></span>
+                                                –&nbsp;<a href="#" title="1,494 reputation" class="comment-user">Alfonso Gomez Jordana Manas</a>
+                                                <span class="comment-date" dir="ltr"><a class="comment-link" href="#"><span title="2016-12-16 01:45:33Z" class="relativetime-clean">Dec 16 '16 at 1:45</span></a></span>
+                                             </div>
+                                          </div>
+                                       </li>
+                                       <li id="comment-89940549" class="comment js-comment">
+                                          <div class="js-comment-actions comment-actions">
+                                             <div class="comment-score js-comment-edit-hide">
+                                                <span title="number of &#39;useful comment&#39; votes received" class="cool">2</span>
+                                             </div>
+                                          </div>
+                                          <div class="comment-text js-comment-text-and-form">
+                                             <div class="comment-body js-comment-edit-hide">
+                                                <span class="comment-copy">This really isn't a great answer to tell customers....</span>
+                                                –&nbsp;<a href="#" title="401 reputation" class="comment-user">Rich Elswick</a>
+                                                <span class="comment-date" dir="ltr"><a class="comment-link" href="#"><span title="2018-07-23 19:14:32Z" class="relativetime-clean">Jul 23 '18 at 19:14</span></a></span>
+                                             </div>
+                                          </div>
+                                       </li>
+                                    </ul>
+                                 </div>
+                                 <div id="comments-link-41108742">
+                                    <a class="js-add-link comments-link disabled-link" title="Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”.">add a comment</a><span class="js-link-separator dno">&nbsp;|&nbsp;</span>
+                                    <a class="js-show-link comments-link dno" title="expand to show all comments on this post" href="#" onclick=""></a>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                        <div id="dfp-mlb" class="everyonelovesstackoverflow everyoneloves__mid-leaderboard"></div>
+                        <a name="55173432"></a>
+                        
+                        <a name="new-answer"></a>
+                        <form id="post-form" class="post-form">
+                           <input type="hidden" id="post-id" value="41079546">
+                           <input type="hidden" id="qualityBanWarningShown" name="qualityBanWarningShown" value="false">
+                           <input type="hidden" name="referrer" value="https://stackoverflow.com/questions/57169407/how-to-access-protected-database-in-actions-on-google-using-google-sign-in">
+                           <h2 class="space">
+                              Your Answer
+                           </h2>
+
+                           <div id="post-editor" class="post-editor js-post-editor js-wz-element">
+                              <div class="ps-relative">
+                                 <div class="wmd-container mb8">
+                                    <div id="wmd-button-bar" class="wmd-button-bar btr-sm">
+                                       <ul id="wmd-button-row" class="wmd-button-row">
+                                          <li id="wmd-bold-button" class="wmd-button" style="left: 0px;"><span style="background-position: 0px -20px;"></span></li>
+                                          <li id="wmd-italic-button" class="wmd-button" style="left: 25px;"><span style="background-position: -20px -20px;"></span></li>
+                                          <li id="wmd-spacer1" class="wmd-spacer" style="left: 50px;"><span style="background-position: -40px -20px;"></span></li>
+                                          <li id="wmd-link-button" class="wmd-button" style="left: 75px;"><span style="background-position: -40px -20px;"></span></li>
+                                          <li id="wmd-quote-button" class="wmd-button" style="left: 100px;"><span style="background-position: -60px -20px;"></span></li>
+                                          <li id="wmd-code-button" class="wmd-button" style="left: 125px;"><span style="background-position: -80px -20px;"></span></li>
+                                          <li id="wmd-image-button" class="wmd-button" style="left: 150px;"><span style="background-position: -100px -20px;"></span></li>
+                                          <li id="wmd-spacer2" class="wmd-spacer" style="left: 175px;"><span style="background-position: -120px -20px;"></span></li>
+                                          <li id="wmd-olist-button" class="wmd-button" style="left: 200px;"><span style="background-position: -120px -20px;"></span></li>
+                                          <li id="wmd-ulist-button" class="wmd-button" style="left: 225px;"><span style="background-position: -140px -20px;"></span></li>
+                                          <li id="wmd-heading-button" class="wmd-button" style="left: 250px;"><span style="background-position: -160px -20px;"></span></li>
+                                          <li id="wmd-hr-button" class="wmd-button" style="left: 275px;"><span style="background-position: -180px -20px;"></span></li>
+                                          <li id="wmd-spacer3" class="wmd-spacer" style="left: 300px;"><span style="background-position: -200px -20px;"></span></li>
+                                          <li id="wmd-undo-button" class="wmd-button" style="left: 325px;"><span style="background-position: -200px -20px;"></span></li>
+                                          <li id="wmd-redo-button" class="wmd-button" style="left: 350px;"><span style="background-position: -220px -20px;"></span></li>
+                                          <li class="wmd-spacer wmd-spacer-max"></li>
+                                       </ul>
+                                    </div>
+                                    <div class="js-stacks-validation">
+                                       <div class="ps-relative">
+                                          <textarea id="wmd-input" class="wmd-input js-wz-element s-input bar0" name="post-text" cols="92" rows="15" tabindex="101"></textarea>
+                                       </div>
+                                       <div class="s-input-message mt4 d-none js-stacks-validation-message"></div>
+                                    </div>
+                                 </div>
+                              </div>
+
+                           </div>
+                           <div class="ps-relative">
+                              <div class="form-item new-post-login p0 my16">
+                                 <div class="grid gs16 md:fd-column new-login-form">
+                                    <div class="grid fd-column w50 md:w-auto gsy gs8 jc-space-between new-login-left">
+                                       <h3 class="grid--cell fs-title">Sign up or <a id="login-link" href="#">log in</a></h3>
+
+                                       <div class="grid--cell s-btn s-btn__muted s-btn__outlined s-btn__icon google-login">
+                                          <svg aria-hidden="true" class="svg-icon native iconGoogle" width="18" height="18" viewBox="0 0 18 18">
+                                             <path d="M16.51 8H8.98v3h4.3c-.18 1-.74 1.48-1.6 2.04v2.01h2.6a7.8 7.8 0 0 0 2.38-5.88c0-.57-.05-.66-.15-1.18z" fill="#4285F4"></path>
+                                             <path d="M8.98 17c2.16 0 3.97-.72 5.3-1.94l-2.6-2a4.8 4.8 0 0 1-7.18-2.54H1.83v2.07A8 8 0 0 0 8.98 17z" fill="#34A853"></path>
+                                             <path d="M4.5 10.52a4.8 4.8 0 0 1 0-3.04V5.41H1.83a8 8 0 0 0 0 7.18l2.67-2.07z" fill="#FBBC05"></path>
+                                             <path d="M8.98 4.18c1.17 0 2.23.4 3.06 1.2l2.3-2.3A8 8 0 0 0 1.83 5.4L4.5 7.49a4.77 4.77 0 0 1 4.48-3.3z" fill="#EA4335"></path>
+                                          </svg>
+                                          Sign up using Google
+                                       </div>
+                                       <div class="grid--cell s-btn s-btn__muted s-btn__icon facebook-login">
+                                          <svg aria-hidden="true" class="svg-icon iconFacebook" width="18" height="18" viewBox="0 0 18 18">
+                                             <path d="M1.88 1C1.4 1 1 1.4 1 1.88v14.24c0 .48.4.88.88.88h7.67v-6.2H7.46V8.4h2.09V6.61c0-2.07 1.26-3.2 3.1-3.2.88 0 1.64.07 1.87.1v2.16h-1.29c-1 0-1.19.48-1.19 1.18V8.4h2.39l-.31 2.42h-2.08V17h4.08c.48 0 .88-.4.88-.88V1.88c0-.48-.4-.88-.88-.88H1.88z" fill="#3C5A96"></path>
+                                          </svg>
+                                          Sign up using Facebook
+                                       </div>
+                                       <div class="grid--cell s-btn s-btn__muted s-btn__outlined s-btn__icon stackexchange-login">
+                                          <svg aria-hidden="true" class="svg-icon native iconLogoGlyphXSm" width="18" height="18" viewBox="0 0 18 18">
+                                             <path d="M14 16v-5h2v7H2v-7h2v5h10z" fill="#BCBBBB"></path>
+                                             <path d="M12.09.72l-1.21.9 4.5 6.07 1.22-.9L12.09.71zM5 15h8v-2H5v2zm9.15-5.87L8.35 4.3l.96-1.16 5.8 4.83-.96 1.16zm-7.7-1.47l6.85 3.19.63-1.37-6.85-3.2-.63 1.38zm6.53 5L5.4 11.39l.38-1.67 7.42 1.48-.22 1.46z" fill="#F48024"></path>
+                                          </svg>
+                                          Sign up using Email and Password
+                                       </div>
+                                    </div>
+                                    <input type="hidden" name="use-facebook" class="use-facebook" value="false">
+                                    <input type="hidden" name="use-google" class="use-google" value="false">
+                                    <input type="button" class="submit-openid" value="Submit" style="display:none">
+                                    <div class="grid gsy gs8 fd-column w50 md:w-auto new-login-right form-item p0">
+                                       <h3 class="grid--cell fs-title">Post as a guest</h3>
+                                       <div class="grid--cell">
+                                          <div class="grid gs4 gsy fd-column">
+                                             <label class="s-label" for="display-name">Name</label>
+                                             <div class="grid ps-relative">
+                                                <input class="s-input" id="display-name" name="display-name" maxlength="30" type="text" value="" tabindex="105" placeholder="">
+                                             </div>
+                                          </div>
+                                       </div>
+                                       <div class="grid--cell">
+                                          <div class="grid gs4 gsy fd-column">
+                                             <div class="grid--cell">
+                                                <div class="grid gs2 gsy fd-column">
+                                                   <label class="grid--cell s-label" for="m-address">Email</label>
+                                                   <p class="grid--cell s-description">Required, but never shown</p>
+                                                </div>
+                                             </div>
+                                             <div class="grid ps-relative">
+                                                <input class="s-input" id="m-address" name="m-address" type="text" value="" size="40" tabindex="106" placeholder="">
+                                             </div>
+                                          </div>
+                                       </div>
+                                    </div>
+                                 </div>
+                              </div>
+                           </div>
+                           <div class="form-submit cbt grid gsx gs4">
+                              <button id="submit-button" class="grid--cell s-btn s-btn__primary s-btn__icon" type="submit" tabindex="120" autocomplete="off">
+                              Post Your Answer                                    </button>
+                              <button class="grid--cell s-btn s-btn__danger discard-answer dno">
+                              Discard
+                              </button>
+                              <p class="privacy-policy-agreement">
+                                 By clicking “Post Your Answer”, you agree to our <a href="#" name="tos" target="_blank" class="-link">terms of service</a>, <a href="#" name="privacy" target="_blank" class="-link">privacy policy</a> and <a href="#" name="cookie" target="_blank" class="-link">cookie policy</a><input type="hidden" name="legalLinksShown" value="1">
+                              </p>
+                           </div>
+                        </form>
+                        <h2 class="bottom-notice">
+                           Not the answer you're looking for?                            Browse other questions tagged <a href="#" class="post-tag" title="show questions tagged &#39;dialogflow&#39;" rel="tag">dialogflow</a> <a href="#" class="post-tag" title="show questions tagged &#39;actions-on-google&#39;" rel="tag">actions-on-google</a> <a href="#" class="post-tag" title="show questions tagged &#39;google-home&#39;" rel="tag">google-home</a>  or <a href="#">ask your own question</a>.                        
+                        </h2>
+                     </div>
+                  </div>
+                  <div id="sidebar" class="show-votes" role="complementary" aria-label="sidebar">
+                     <div class="module question-stats">
+                        <table id="qinfo">
+                           <tbody>
+                              <tr>
+                                 <td>
+                                    <p class="label-key">asked</p>
+                                 </td>
+                                 <td style="padding-left: 10px">
+                                    <p class="label-key" title="2016-12-10 19:43:59Z">
+                                       <b>
+                                       <time itemprop="dateCreated" datetime="2016-12-10T19:43:59">2 years, 7 months ago</time>
+                                       </b>
+                                    </p>
+                                 </td>
+                              </tr>
+                              <tr>
+                                 <td>
+                                    <p class="label-key">viewed</p>
+                                 </td>
+                                 <td style="padding-left: 10px">
+                                    <p class="label-key">
+                                       <b>1,792 times</b>
+                                    </p>
+                                 </td>
+                              </tr>
+                              <tr>
+                                 <td>
+                                    <p class="label-key">active</p>
+                                 </td>
+                                 <td style="padding-left: 10px">
+                                    <p class="label-key"><b><a href="#" class="lastactivity-link" title="2019-03-14 23:19:16Z">4 months ago</a></b></p>
+                                 </td>
+                              </tr>
+                           </tbody>
+                        </table>
+                     </div>
+                     <div class="s-sidebarwidget s-sidebarwidget__yellow s-anchors s-anchors__default mb16">
+                        <div class="s-sidebarwidget--header s-sidebarwidget__small-bold-text">
+                           Blog
+                        </div>
+                        <ul class="s-sidebarwidget--content s-sidebarwidget__items pt0 pr16 pb0 pl16">
+                           <li class="s-sidebarwidget--item grid">
+                              <div class="grid--cell1 fl-shrink0">
+                                 <a href="#">
+                                    <div class="favicon favicon-stackexchangemeta" title="Meta Stack Exchange"></div>
+                                 </a>
+                              </div>
+                              <div class="grid--cell">
+                                 <a href="#">How Stack Overflow upgraded from Windows Server 2012</a>
+                              </div>
+                           </li>
+                        </ul>
+                        <div class="s-sidebarwidget--header s-sidebarwidget__small-bold-text">
+                           Featured on Meta
+                        </div>
+                        <ul class="s-sidebarwidget--content s-sidebarwidget__items pt0 pr16 pb0 pl16">
+                           <li class="s-sidebarwidget--item grid">
+                              <div class="grid--cell1 fl-shrink0">
+                                 <a href="#">
+                                    <div class="favicon favicon-stackexchangemeta" title="Meta Stack Exchange"></div>
+                                 </a>
+                              </div>
+                              <div class="grid--cell">
+                                 <a href="#">Custom Filters release announcement</a>
+                              </div>
+                           </li>
+                        </ul>
+                        <ul class="s-sidebarwidget--content s-sidebarwidget__items pt0 pr16 pb0 pl16">
+                           <li class="s-sidebarwidget--item grid">
+                              <div class="grid--cell1 fl-shrink0">
+                                 <a href="#">
+                                    <div class="favicon favicon-stackexchangemeta" title="Meta Stack Exchange"></div>
+                                 </a>
+                              </div>
+                              <div class="grid--cell">
+                                 <a href="#">Unicorn Meta Zoo #6: Interview with Catija</a>
+                              </div>
+                           </li>
+                        </ul>
+                        <ul class="s-sidebarwidget--content s-sidebarwidget__items pt0 pr16 pb0 pl16">
+                           <li class="s-sidebarwidget--item grid">
+                              <div class="grid--cell1 fl-shrink0">
+                                 <a href="#">
+                                    <div class="favicon favicon-stackoverflowmeta" title="Meta Stack Overflow"></div>
+                                 </a>
+                              </div>
+                              <div class="grid--cell">
+                                 <a href="#" title="We’re removing “Hot Meta Posts” from Stack Overflow&#39;s sidebar for now; moderators now fully control [featured]">We’re removing “Hot Meta Posts” from Stack Overflow's sidebar for now;…</a>
+                              </div>
+                           </li>
+                        </ul>
+                        <ul class="s-sidebarwidget--content s-sidebarwidget__items pt0 pr16 pb0 pl16">
+                           <li class="s-sidebarwidget--item grid">
+                              <div class="grid--cell1 fl-shrink0">
+                                 <a href="#">
+                                    <div class="favicon favicon-stackoverflowmeta" title="Meta Stack Overflow"></div>
+                                 </a>
+                              </div>
+                              <div class="grid--cell">
+                                 <a href="#">Stack Overflow lets Facebook track us across their sites</a>
+                              </div>
+                           </li>
+                        </ul>
+                     </div>
+                     <div id="dfp-tsb" class="everyonelovesstackoverflow everyoneloves__top-sidebar"></div>
+                     <div id="hireme"></div>
+                     <div class="module sidebar-linked">
+                        <h4 id="h-linked">Linked</h4>
+                        <div class="linked">
+                           <div class="spacer">
+                              <a href="#" title="Vote score (upvotes - downvotes)">
+                                 <div class="answer-votes  default">1</div>
+                              </a>
+                              <a href="#" class="question-hyperlink">Dialogflow Account Unlinking</a>
+                           </div>
+                        </div>
+                     </div>
+                     <div class="module sidebar-related">
+                        <h4 id="h-related">Related</h4>
+                        <div class="related js-gps-related-questions">
+                           <div class="spacer">
+                              <a href="#" title="Vote score (upvotes - downvotes)">
+                                 <div class="answer-votes answered-accepted default">4</div>
+                              </a>
+                              <a href="#" class="question-hyperlink">Account Linking on Actions on Google</a>
+                           </div>
+                           <div class="spacer">
+                              <a href="#" title="Vote score (upvotes - downvotes)">
+                                 <div class="answer-votes answered-accepted default">0</div>
+                              </a>
+                              <a href="#" class="question-hyperlink">Action on Google Unlink/Link needed every hour</a>
+                           </div>
+                           <div class="spacer">
+                              <a href="#" title="Vote score (upvotes - downvotes)">
+                                 <div class="answer-votes default">0</div>
+                              </a>
+                              <a href="#" class="question-hyperlink">Action on Google Test Account</a>
+                           </div>
+                           <div class="spacer">
+                              <a href="#" title="Vote score (upvotes - downvotes)">
+                                 <div class="answer-votes default">1</div>
+                              </a>
+                              <a href="#" class="question-hyperlink">Google Action (Dialogflow) Account Linking not reliable during testing</a>
+                           </div>
+                           <div class="spacer">
+                              <a href="#" title="Vote score (upvotes - downvotes)">
+                                 <div class="answer-votes default">1</div>
+                              </a>
+                              <a href="#" class="question-hyperlink">Google actions account linking different URL's in DEBUG- sharedDebugInfo-debugInfo</a>
+                           </div>
+                           <div class="spacer">
+                              <a href="#" title="Vote score (upvotes - downvotes)">
+                                 <div class="answer-votes answered-accepted default">1</div>
+                              </a>
+                              <a href="#" class="question-hyperlink">Actions on Google implicit account linking works in simulator/browser, but not on device (via Google Home app)</a>
+                           </div>
+                           <div class="spacer">
+                              <a href="#" title="Vote score (upvotes - downvotes)">
+                                 <div class="answer-votes default">1</div>
+                              </a>
+                              <a href="#" class="question-hyperlink">Dialogflow Account Unlinking</a>
+                           </div>
+                           <div class="spacer">
+                              <a href="#" title="Vote score (upvotes - downvotes)">
+                                 <div class="answer-votes default">1</div>
+                              </a>
+                              <a href="#" class="question-hyperlink">Custom error message with Google Actions account linking?</a>
+                           </div>
+                           <div class="spacer">
+                              <a href="#" title="Vote score (upvotes - downvotes)">
+                                 <div class="answer-votes answered-accepted default">0</div>
+                              </a>
+                              <a href="#" class="question-hyperlink">Where can you find your actions in google-home app which is not deployed but still in development phase</a>
+                           </div>
+                           <div class="spacer">
+                              <a href="#" title="Vote score (upvotes - downvotes)">
+                                 <div class="answer-votes default">1</div>
+                              </a>
+                              <a href="#" class="question-hyperlink">Google Home app with account linking option</a>
+                           </div>
+                        </div>
+                     </div>
+                     <div id="hot-network-questions" class="module tex2jax_ignore">
+                        <h4>
+                           <a href="#" class=" s-link s-link__inherit">
+                           Hot Network Questions
+                           </a>
+                        </h4>
+                        <ul>
+                           <li>
+                              <div class="favicon favicon-space" title="Space Exploration Stack Exchange"></div>
+                              <a href="#" class=" question-hyperlink mb0">Was US film used in Luna 3?</a>
+                           </li>
+                           <li>
+                              <div class="favicon favicon-politics" title="Politics Stack Exchange"></div>
+                              <a href="#" class=" question-hyperlink mb0">
+                              What does a black-and-white Puerto Rican flag signify?
+                              </a>
+                           </li>
+                           <li>
+                              <div class="favicon favicon-bicycles" title="Bicycles Stack Exchange"></div>
+                              <a href="#" class=" question-hyperlink mb0">
+                              Adding gears to my grandson's 12" bike
+                              </a>
+                           </li>
+                           <li>
+                              <div class="favicon favicon-mathematica" title="Mathematica Stack Exchange"></div>
+                              <a href="#" class=" question-hyperlink mb0">
+                              How to Sow[] until I've Reap[]'d enough?
+                              </a>
+                           </li>
+                           <li>
+                              <div class="favicon favicon-rpg" title="Role-playing Games Stack Exchange"></div>
+                              <a href="#" class=" question-hyperlink mb0">
+                              Does downing a character at the start of its turn require an immediate Death Saving Throw?
+                              </a>
+                           </li>
+                           <li class="js-hidden dno" style="display: list-item;">
+                              <div class="favicon favicon-ell" title="English Language Learners Stack Exchange"></div>
+                              <a href="#" class=" question-hyperlink mb0">
+                              Why do people say "I am broke" instead of "I am broken"?
+                              </a>
+                           </li>
+                           <li class="js-hidden dno" style="display: list-item;">
+                              <div class="favicon favicon-retrocomputing" title="Retrocomputing Stack Exchange"></div>
+                              <a href="#" class=" question-hyperlink mb0">
+                              What was the rationale behind 36 bit computer architectures?
+                              </a>
+                           </li>
+                           <li class="js-hidden dno" style="display: list-item;">
+                              <div class="favicon favicon-money" title="Personal Finance &amp; Money Stack Exchange"></div>
+                              <a href="#" class=" question-hyperlink mb0">
+                              Do I care if the housing market has gone up or down, if I'm moving from one house to another?
+                              </a>
+                           </li>
+                           <li class="js-hidden dno" style="display: list-item;">
+                              <div class="favicon favicon-rpg" title="Role-playing Games Stack Exchange"></div>
+                              <a href="#" class=" question-hyperlink mb0">
+                              How can I deal with someone that wants to kill something that isn't supposed to be killed?
+                              </a>
+                           </li>
+                           <li class="js-hidden dno" style="display: list-item;">
+                              <div class="favicon favicon-softwareengineering" title="Software Engineering Stack Exchange"></div>
+                              <a href="#" class=" question-hyperlink mb0">
+                              Is it better to merge "often" or only after completion do a big merge of feature branches?
+                              </a>
+                           </li>
+                           <li class="js-hidden dno" style="display: list-item;">
+                              <div class="favicon favicon-tex" title="TeX - LaTeX Stack Exchange"></div>
+                              <a href="#" class=" question-hyperlink mb0">
+                              Adding one more column to a table
+                              </a>
+                           </li>
+                           <li class="js-hidden dno" style="display: list-item;">
+                              <div class="favicon favicon-german" title="German Language Stack Exchange"></div>
+                              <a href="#" class=" question-hyperlink mb0">
+                              German phrase for 'suited and booted'
+                              </a>
+                           </li>
+                           <li class="js-hidden dno" style="display: list-item;">
+                              <div class="favicon favicon-vi" title="Vi and Vim Stack Exchange"></div>
+                              <a href="#" class=" question-hyperlink mb0">
+                              How to run a substitute command on only a certain part of the line
+                              </a>
+                           </li>
+                           <li class="js-hidden dno" style="display: list-item;">
+                              <div class="favicon favicon-electronics" title="Electrical Engineering Stack Exchange"></div>
+                              <a href="#" class=" question-hyperlink mb0">
+                              Strange LED behavior: Why is there a voltage over the LED with only one wire connected to it?
+                              </a>
+                           </li>
+                           <li class="js-hidden dno" style="display: list-item;">
+                              <div class="favicon favicon-interpersonal" title="Interpersonal Skills Stack Exchange"></div>
+                              <a href="#" class=" question-hyperlink mb0">
+                              How can I indicate that what I'm saying is not sarcastic online?
+                              </a>
+                           </li>
+                           <li class="js-hidden dno" style="display: list-item;">
+                              <div class="favicon favicon-english" title="English Language &amp; Usage Stack Exchange"></div>
+                              <a href="#" class=" question-hyperlink mb0">
+                              Why is there an extra "t" in Lemmatization?
+                              </a>
+                           </li>
+                           <li class="js-hidden dno" style="display: list-item;">
+                              <div class="favicon favicon-french" title="French Language Stack Exchange"></div>
+                              <a href="#" class=" question-hyperlink mb0">
+                              "It is what it is" in French
+                              </a>
+                           </li>
+                           <li class="js-hidden dno" style="display: list-item;">
+                              <div class="favicon favicon-rpg" title="Role-playing Games Stack Exchange"></div>
+                              <a href="#" class=" question-hyperlink mb0">
+                              If I have the Armor of Shadows Eldritch Invocation, do I know the Mage Armor spell?
+                              </a>
+                           </li>
+                           <li class="js-hidden dno" style="display: list-item;">
+                              <div class="favicon favicon-workplace" title="The Workplace Stack Exchange"></div>
+                              <a href="#" class=" question-hyperlink mb0">
+                              High income and difficulty during interviews
+                              </a>
+                           </li>
+                           <li class="js-hidden dno" style="display: list-item;">
+                              <div class="favicon favicon-superuser" title="Super User"></div>
+                              <a href="#" class=" question-hyperlink mb0">
+                              I have a domain, static IP address and many devices I'd like to access outside my house. How do I route them?
+                              </a>
+                           </li>
+                           <li class="js-hidden dno" style="display: list-item;">
+                              <div class="favicon favicon-tex" title="TeX - LaTeX Stack Exchange"></div>
+                              <a href="#" class=" question-hyperlink mb0">
+                              Pgfplots fillbetween and Tikz \shade
+                              </a>
+                           </li>
+                           <li class="js-hidden dno" style="">
+                              <div class="favicon favicon-space" title="Space Exploration Stack Exchange"></div>
+                              <a href="#" class=" question-hyperlink mb0">
+                              Were the Apollo broadcasts recorded locally on the LM?
+                              </a>
+                           </li>
+                           <li class="js-hidden dno" style="">
+                              <div class="favicon favicon-mathematica" title="Mathematica Stack Exchange"></div>
+                              <a href="#" class=" question-hyperlink mb0">
+                              Import data from a current web session?
+                              </a>
+                           </li>
+                           <li class="js-hidden dno" style="">
+                              <div class="favicon favicon-scifi" title="Science Fiction &amp; Fantasy Stack Exchange"></div>
+                              <a href="#" class=" question-hyperlink mb0">
+                              Book in which the "mountain" in the distance was a hole in the flat world
+                              </a>
+                           </li>
+                        </ul>
+                        <a href="#" class="show-more js-show-more">
+                        more hot questions
+                        </a>
+                     </div>
+                     <div id="feed-link" class="js-feed-link">
+                        <a href="#" title="Feed of this question and its answers">
+                           <svg aria-hidden="true" class="svg-icon fc-orange-400 iconRss" width="18" height="18" viewBox="0 0 18 18">
+                              <path d="M1 3c0-1.1.9-2 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V3zm14.5 12C15.5 8.1 9.9 2.5 3 2.5V5a10 10 0 0 1 10 10h2.5zm-5 0A7.5 7.5 0 0 0 3 7.5V10a5 5 0 0 1 5 5h2.5zm-5 0A2.5 2.5 0 0 0 3 12.5V15h2.5z"></path>
+                           </svg>
+                           Question feed
+                        </a>
+                     </div>
+                     <aside class="s-modal js-feed-link-modal" tabindex="-1" role="dialog" aria-labelledby="feed-modal-title" aria-describedby="feed-modal-description" aria-hidden="true">
+                        <div class="s-modal--dialog js-modal-dialog wmx4" role="document">
+                           <h1 class="s-modal--header fw-bold js-first-tabbable c-move" id="feed-modal-title"  tabindex="0">
+                              Subscribe to RSS
+                           </h1>
+                           <div class="grid gs4 gsy fd-column">
+                              <div class="grid--cell">
+                                 <label class="d-block s-label c-default" for="feed-url">
+                                    Question feed
+                                    <p class="s-description mt2" id="feed-modal-description">To subscribe to this RSS feed, copy and paste this URL into your RSS reader.</p>
+                                 </label>
+                              </div>
+                              <div class="grid ps-relative">
+                                 <input class="s-input" type="text" name="feed-url" id="feed-url" readonly="readonly" value="https://stackoverflow.com/feeds/question/41079546">
+                                 <svg aria-hidden="true" class="svg-icon s-input-icon fc-orange-400 iconRss" width="18" height="18" viewBox="0 0 18 18">
+                                    <path d="M1 3c0-1.1.9-2 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V3zm14.5 12C15.5 8.1 9.9 2.5 3 2.5V5a10 10 0 0 1 10 10h2.5zm-5 0A7.5 7.5 0 0 0 3 7.5V10a5 5 0 0 1 5 5h2.5zm-5 0A2.5 2.5 0 0 0 3 12.5V15h2.5z"></path>
+                                 </svg>
+                              </div>
+                           </div>
+                           <a class="s-modal--close s-btn s-btn__muted js-modal-close js-last-tabbable" href="#" aria-label="Close">
+                              <svg aria-hidden="true" class="svg-icon iconClearSm" width="14" height="14" viewBox="0 0 14 14">
+                                 <path d="M12 3.41L10.59 2 7 5.59 3.41 2 2 3.41 5.59 7 2 10.59 3.41 12 7 8.41 10.59 12 12 10.59 8.41 7 12 3.41z"></path>
+                              </svg>
+                           </a>
+                        </div>
+                     </aside>
+                  </div>
+               </div>
+               <div style="display:none" id="prettify-lang"></div>
+            </div>
+         </div>
+      </div>
+      <footer id="footer" class="site-footer js-footer" role="contentinfo">
+         <div class="site-footer--container">
+            <div class="site-footer--logo">
+               <a href="#">
+                  <svg aria-hidden="true" class="svg-icon native iconLogoGlyphMd" width="32" height="37" viewBox="0 0 32 37">
+                     <path d="M26 33v-9h4v13H0V24h4v9h22z" fill="#BCBBBB"></path>
+                     <path d="M21.5 0l-2.7 2 9.9 13.3 2.7-2L21.5 0zM26 18.4L13.3 7.8l2.1-2.5 12.7 10.6-2.1 2.5zM9.1 15.2l15 7 1.4-3-15-7-1.4 3zm14 10.79l.68-2.95-16.1-3.35L7 23l16.1 2.99zM23 30H7v-3h16v3z" fill="#F48024"></path>
+                  </svg>
+               </a>
+            </div>
+            <nav class="site-footer--nav">
+               <div class="site-footer--col site-footer--col__visible js-footer-col">
+                  <h5 class="-title"><a href="#" class="">Stack Overflow</a></h5>
+                  <ul class="-list js-primary-footer-links">
+                     <li><a href="#" class=" -link redditshortcut">/r/AskReddit</a></li>
+                     <li><a href="#" class=" -link redditshortcut">/r/todayilearned</a></li>
+                     <li><a href="#" class=" -link redditshortcut">/r/LifeProTips</a></li>
+                     <li><a href="#" class=" -link redditshortcut">/r/investing</a></li>
+                     <li><a href="#" class=" -link redditshortcut">/r/stocks</a></li>
+                     <li><a href="#" class=" -link redditshortcut">/r/explainlikeimfive</a></li>
+                     <li><a href="#" class=" -link redditshortcut">/r/Showerthoughts</a></li>
+                     <li><a href="#" class=" -link redditshortcut">/r/askscience</a></li>
+                  </ul>
+               </div>
+               <div class="site-footer--col site-footer--col__visible js-footer-col">
+                  <h5 class="-title"><a href="#" class="">Products</a></h5>
+                  <ul class="-list">
+                     <li class="-item"><a href="#" class=" -link">Teams</a></li>
+                     <li class="-item"><a href="#" class=" -link">Talent</a></li>
+                     <li class="-item"><a href="#" class=" -link">Advertising</a></li>
+                     <li class="-item"><a href="#" class=" -link">Enterprise</a></li>
+                  </ul>
+               </div>
+               <div class="site-footer--col site-footer--col__visible js-footer-col">
+                  <h5 class="-title"><a class=""   href="#">Company</a></h5>
+                  <ul class="-list">
+                     <li class="-item"><a class=" -link"   href="#">About</a></li>
+                     <li class="-item"><a class=" -link"   href="#">Press</a></li>
+                     <li class="-item"><a class=" -link"   href="#">Work Here</a></li>
+                     <li class="-item"><a class=" -link"   href="#">Legal</a></li>
+                     <li class="-item"><a class=" -link"   href="#">Privacy Policy</a></li>
+                     <li class="-item"><a class=" -link"   href="#">Contact Us</a></li>
+                  </ul>
+               </div>
+               <div class="site-footer--col site-footer--categories-nav site-footer--col__visible">
+                  <a href="#" class="site-footer--back js-footer-back">
+                     <svg aria-hidden="true" class="svg-icon iconArrowLeftAlt" width="18" height="18" viewBox="0 0 18 18">
+                        <path d="M10.58 16L12 14.59 6.4 9 12 3.41 10.57 2l-7 7 7 7z"></path>
+                     </svg>
+                  </a>
+                  <div>
+                     <h5 class="-title"><a href="#">Stack Exchange<br> Network</a></h5>
+                     <ul class="-list">
+                        <li class="-item"><a href="#" class="-link _expandable js-footer-category-trigger">Technology</a></li>
+                        <li class="-item"><a href="#" class="-link _expandable js-footer-category-trigger">Life / Arts</a></li>
+                        <li class="-item"><a href="#" class="-link _expandable js-footer-category-trigger">Culture / Recreation</a></li>
+                        <li class="-item"><a href="#" class="-link _expandable js-footer-category-trigger">Science</a></li>
+                        <li class="-item"><a href="#" class="-link _expandable js-footer-category-trigger">Other</a></li>
+                     </ul>
+                  </div>
+               </div>
+               
+            </nav>
+            <div class="site-footer--copyright fs-fine">
+               <ul class="-list">
+                  <li class="-item"><a class=" -link"   href="#">Blog</a></li>
+                  <li class="-item"><a href="#" class="-link">Facebook</a></li>
+                  <li class="-item"><a href="#" class="-link">Twitter</a></li>
+                  <li class="-item"><a href="#" class="-link">LinkedIn</a></li>
+               </ul>
+               <p class="mt-auto mb24">
+                  site design / logo © 2019 Stack Exchange Inc; user contributions licensed under <a href="#" rel="license">cc by-sa 3.0</a>
+                  with <a href="#" rel="license">attribution required</a>.
+                  <span id="svnrev">rev&nbsp;2019.7.23.34404</span>
+               </p>
+            </div>
+         </div>
+      </footer>
+   </body>
+</html>

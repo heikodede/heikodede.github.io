@@ -1,0 +1,149 @@
+.btn {
+    transition: opacity 0.3s ease-in-out;
+}
+
+.btn:hover {
+    box-shadow: none;
+    -webkit-box-shadow: none;
+    opacity: 0.8;
+}
+
+.big-feature-item sup {
+    top: -.8em;
+    right: 0.5em;
+    font-weight: 700;
+}
+
+#testimonial-section .owl-dots .owl-dot span {
+    margin: 2px 35px;
+    position: relative;
+    left: -15px;
+    z-index: 10000;
+}
+
+a:active, button.btn:active {
+    transform: scale(0.92);
+}
+
+#banner-section .banner-content h1 span.d-block {
+    position: relative;
+    top: 15px;
+    left: 5px;
+}
+
+/* Configurator */
+
+#configurator-section > div.tab-wrapper {
+    min-height: 702px;
+}
+
+#configurator-section > div.tab-wrapper > div.container {
+    min-height: 692px;
+}
+
+#configurator-section .tab-wrapper .tabs-nav .nav a span {
+    transform: scale(1.2);
+    font-weight: bold;
+}
+
+#configurator-section .tab-wrapper .tabs-nav .nav a {
+    opacity: 0.5;
+}
+
+#configurator-section .tab-wrapper .tabs-nav .nav a.active {
+    opacity: 1;
+}
+
+.product-item .item-content {
+    position: relative;
+    top: -20px;
+}
+
+.product-item .item-content .btns-group .form-item {
+    width: 160px;
+}
+
+#tab-1 input[type=text] {
+    text-align: center;
+}
+
+.product-item .item-content .btns-group li:last-child {
+    color: #303030;
+    text-transform: uppercase;
+    font-size: 16px;
+    margin: 0 10px;
+}
+
+#tab-2 .product-item {
+	.item-image {
+		width: 220px;
+		height: 220px;
+		>img {
+			height: 120px;
+		}
+    }
+}
+
+#tab-2 h3 {
+    font-size: 18px;
+    text-transform: uppercase;
+    font-family: 'Poppins SemiBold';
+    position: relative;
+    margin-bottom: 0;
+    z-index: 100;
+}
+
+#tab-2 .row {
+    padding: 0 100px;
+}
+
+
+/* SVG Shapes */
+
+#banner-section .shape-1 {
+    background: url("../../assets/svg/header_corner.svg") no-repeat;
+    width: 100%;
+    height: 420px;
+    opacity: 0.2;
+}
+
+#banner-section {
+    background: url("../../assets/svg/header_bg.svg") no-repeat;
+    background-size: cover;
+}
+
+#about-section .shape-1 {
+    background: url("../../assets/svg/about-side.svg") no-repeat;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    top: -160px;
+    right: 0;
+    max-width: 1210px;
+}
+
+#feature-section .shape-1 img {
+    top: -120px;
+    position: relative;
+}
+
+#testimonial-section .shape-1 {
+    background: url("../../assets/svg/testimonial-side.svg") no-repeat;
+    width: 100%;
+    height: 200%;
+    background-size: cover;
+    top: 140px;
+    right: 0;
+    max-width: 800px;
+}
+
+body > .shape-header {
+    background: url("../../assets/svg/header_corner.svg") no-repeat;
+    width: 100%;
+    height: 420px;
+    opacity: 0.2;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -100;
+}

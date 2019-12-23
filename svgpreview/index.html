@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Website Preview</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css?family=Poppins:200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i&display=swap');
+    @font-face {
+      font-family: 'raustila';
+      src: url('https://rawcdn.githack.com/cheapjoe/filehost/38f2f17c233cf1f4d98126940eda488c721cfea9/fonts/raustila-Regular.ttf') format('truetype');
+    }
+    @font-face {
+      font-family: 'Bebas';
+      src: url('https://rawcdn.githack.com/cheapjoe/filehost/38f2f17c233cf1f4d98126940eda488c721cfea9/fonts/BEBAS.ttf') format('truetype');
+    }
+    
+    body {
+      margin: 0;
+      background: #CE959C;
+    }
+
+    #Menu *,
+    #Watch,
+    #Contact-Form path,
+    #FAQ > g > g,
+    #CTA {
+      cursor: pointer;
+      transition: all 0.25s ease-in-out;
+    }
+
+    #Menu *:hover,
+    #Watch:hover,
+    #Contact-Form path:hover,
+    #FAQ > g > g:hover {
+      opacity: 0.75;
+    }
+  </style>
+</head>
+<body>
+  <img id="svgPreview" src="svg/CubraDesign.svg"></img>
+  
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/svg-injector/1.1.3/svg-injector.min.js"></script>
+  <script>
+    SVGInjector($("#svgPreview"));
+    
+  /*$( document).click(function() {
+    window.location.replace("configurator01.html");
+  });*/
+    
+  $(document).on("click","#Menu > g > text",function() {
+    window.location.replace("configurator01.html");
+  });
+    
+  $(document).on("click","#CTA",function() {
+    window.location.replace("configurator01.html");
+  });
+  </script>
+</body>
+</html>
+

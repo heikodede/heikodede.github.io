@@ -1,0 +1,488 @@
+/* ================================================== 
+*	Project Name 	:  ----------
+*	File 			:  Responsive CSS Base
+*	Version 		:  1.0.0
+*	Last change 	:  -- ----- ----
+*	Author 			:  ----------
+*	Developer:		:  Rakibul Islam Dewan
+
+*	css code for responsive layout To make Responsive
+================================================== */
+
+/* ==================================================
+*	1 - media screen and (max-width: 1440px)
+*	2 - media screen and (max-width: 1280px)
+*	3 - media screen and (max-width: 1199px)
+*	4 - media screen and (max-width: 991px)
+*	5 - media screen and (max-width: 767px)
+*	6 - media screen and (max-width: 680px)
+*	7 - media screen and (max-width: 580px)
+*	8 - media screen and (max-width: 480px)
+*	9 - media screen and (max-width: 320px)
+================================================== */
+
+
+
+
+
+/*  ====================================================================================================
+1 - media screen and (max-width: 1440px) - start
+==================================================================================================== */
+
+@media screen and (max-width: 1440px) {}
+
+/* ====================================================================================================
+1 - media screen and (max-width: 1440px) - end
+==================================================================================================== */
+
+
+
+
+
+/*  ====================================================================================================
+2 - media screen and (max-width: 1280px) - start
+==================================================================================================== */
+
+@media screen and (max-width: 1280px) {
+
+	/* footer - start */
+	.footer-section .menu-list {
+		padding-top: 10px;
+	}
+	/* footer - end */
+
+	/* home - start */
+	.banner-section .shape-1 {
+		max-width: 500px;
+	}
+
+	.about-section {
+		padding-top: 0px;
+		padding-bottom: 120px;
+	}
+	.about-section .shape-1 {
+		max-width: 900px;
+	}
+
+	.feature-section .shape-1 {
+		top: -120px;
+	}
+
+	.testimonial-section {
+		padding: 120px 0px;
+	}
+
+	.feature-section .shape-2 {
+		display: none;
+	}
+	/* home - end */
+
+}
+
+/* ====================================================================================================
+2 - media screen and (max-width: 1280px) - end
+==================================================================================================== */
+
+
+
+
+
+/*  ====================================================================================================
+3 - media screen and (max-width: 1199px) - start
+==================================================================================================== */
+
+@media screen and (max-width: 1199px) {
+
+	/* home - start */
+	.banner-section .shape-1 {
+		max-width: 420px;
+	}
+
+	.about-section .shape-1 {
+		top: -40px;
+		max-width: 745px;
+	}
+
+	.primary-feature-item {
+		margin-bottom: 70px;
+	}
+
+	.feature-section .shape-1 {
+		top: -35px;
+	}
+
+	.big-feature-item .item-image {
+		max-width: 430px;
+	}
+	.big-feature-item p {
+		font-size: 160px;
+	}
+	.big-feature-item p sup {
+		font-size: 80px;
+	}
+
+	.configurator-section .tabs-nav > ul > li {
+		margin-right: 30px;
+		margin-bottom: 15px;
+	}
+	.product-carousel .owl-nav .owl-next {
+		right: 80px;
+	}
+	.product-carousel .owl-nav .owl-prev {
+		left: 80px;
+	}
+	/* home - end */
+
+}
+
+/* ====================================================================================================
+3 - media screen and (max-width: 1199px) - end
+==================================================================================================== */
+
+
+
+
+
+/* ====================================================================================================
+4 - media screen and (max-width: 991px) - start
+==================================================================================================== */
+
+@media screen and (max-width: 991px) {
+
+	/* global - start */
+	.order-last {
+		order: 0;
+	}
+	.section-title h2 {
+		font-size: 24px;
+	}
+	.section-title.mb-80 {
+		margin-bottom: 40px;
+	}
+	#backtotop #scroll {
+		font-size: 20px;
+		line-height: 42px;
+	}
+	#backtotop {
+		width: 40px;
+		height: 40px;
+	}
+	/* global - end */
+
+	/* header - start */
+	.header-section .main-menubar {
+		display: none;
+	}
+	.header-section .btn {
+		display: none;
+	}
+	.header-section .menu-btn {
+		display: inline-block;
+	}
+	/* header - end */
+
+	/* footer - start */
+	.footer-section .contact-form {
+		margin-top: 40px;
+	}
+	.footer-section {
+		padding-top: 220px;
+		padding-bottom: 10px;
+		background-size: 120% 104%;
+	}
+	.footer-section .shape-1 {
+		height: 250px;
+		overflow: hidden;
+	}
+	.footer-section .shape-1 > img {
+		width: 150%;
+		height: 100%;
+		display: block;
+	}
+	.footer-section .menu-list > ul > li {
+		margin-right: 30px;
+	}
+	/* footer - end */
+
+	/* home - start */
+	.banner-section .shape-1 {
+		max-width: 300px;
+	}
+	.banner-section {
+		padding-top: 130px;
+		padding-bottom: 260px;
+	}
+	.banner-section .banner-content {
+		margin-top: 30px;
+	}
+
+	.about-section .shape-1 {
+		display: none;
+	}
+	.testimonial-carousel .item-image {
+		max-width: 300px;
+	}
+	.testimonial-carousel .item-content {
+		padding-top: 55px;
+	}
+	.about-section .testimonial-carousel {
+		margin-bottom: 0px;
+	}
+	.about-item {
+		margin-top: 40px;
+	}
+
+	.about-section {
+		padding-bottom: 80px;
+	}
+
+	.feature-section .shape-1 {
+		display: none;
+	}
+	.primary-feature-item img {
+		height: 80px;
+	}
+	.primary-feature-item {
+		padding-right: 100px;
+		margin-bottom: 60px;
+	}
+
+	.testimonial-section {
+		padding: 80px 0px;
+	}
+
+	.big-feature-item .item-image {
+		max-width: 300px;
+	}
+	.big-feature-item p {
+		font-size: 110px;
+	}
+	.big-feature-item p sup {
+		font-size: 50px;
+	}
+	.big-feature-item .item-content {
+		padding-top: 80px;
+	}
+
+	.faq-section .card {
+		margin-top: 30px;
+	}
+
+	.configurator-section .tab-wrapper {
+		padding: 160px 60px;
+	}
+
+	.configurator-section .tab-wrapper {
+		padding: 0px;
+		background: none !important;
+	}
+	.product-carousel .owl-nav .owl-prev {
+		left: 0px;
+	}
+	.product-carousel .owl-nav .owl-next {
+		right: 0px;
+	}
+	.owl-theme .owl-nav .owl-next:before,
+	.owl-theme .owl-nav .owl-prev:before {
+		color: #ffffff;
+	}
+	.configurator-section .tabs-nav > ul > li > a {
+		color: #ffffff;
+	}
+
+	.product-carousel-2 .owl-nav {
+		top: 0px;
+		right: 0px;
+		position: absolute;
+	}
+	.product-carousel-2 .owl-nav .owl-prev,
+	.product-carousel-2 .owl-nav .owl-next {
+		transform: unset;
+		background: red;
+		position: relative;
+		display: inline-block;
+	}
+	/* home - end */
+
+}
+
+/* ====================================================================================================
+4 - media screen and (max-width: 991px) - end
+==================================================================================================== */
+
+
+
+
+
+/* ====================================================================================================
+5 - media screen and (max-width: 767px) - start
+==================================================================================================== */
+
+@media screen and (max-width: 767px) {}
+
+/* ====================================================================================================
+5 - media screen and (max-width: 767px) - end
+==================================================================================================== */
+
+
+
+
+
+/* ====================================================================================================
+6 - media screen and (max-width: 680px) - start
+==================================================================================================== */
+
+@media screen and (max-width: 680px) {}
+
+/* ====================================================================================================
+6 - media screen and (max-width: 680px) - end
+==================================================================================================== */
+
+
+
+
+
+
+/* ====================================================================================================
+7 - media screen and (max-width: 580px) - start
+==================================================================================================== */
+
+@media screen and (max-width: 580px) {
+
+	/* global - start */
+	body {
+		font-size: 14px;
+	}
+	.section-title h2 {
+		font-size: 20px;
+	}
+	/* global - end */
+
+	/* header - start */
+	.header-section .brand-link {
+		max-width: 70px;
+	}
+	.header-section .menu-btn {
+		font-size: 24px;
+	}
+	/* header - end */
+
+	/* footer - start */
+	.footer-section {
+		padding-top: 110px;
+		padding-bottom: 10px;
+		background-size: 220% 110%;
+	}
+	/* footer - end */
+
+	/* home - start */
+	.banner-section {
+		text-align: center;
+	}
+	.banner-section h1 {
+		font-size: 80px;
+	}
+	.banner-section h1 span {
+		font-size: 36px;
+		margin-bottom: -18px;
+	}
+	.banner-section {
+		padding-bottom: 230px;
+		background-size: 180% 100%;
+	}
+
+	.testimonial-carousel .item-image {
+		float: none;
+		display: table;
+		margin: 0px auto;
+		max-width: 260px;
+	}
+	.testimonial-carousel .item-content {
+		padding-top: 0px;
+		text-align: center;
+	}
+
+	.primary-feature-item {
+		text-align: center;
+	}
+	.primary-feature-item .icon {
+		margin: 0px;
+		float: none;
+		display: inline-block;
+	}
+	.primary-feature-item {
+		padding-right: 0px;
+	}
+	.primary-feature-item img {
+		display: none;
+	}
+
+	.testimonial-section .testimonial-carousel .item {
+		padding-right: 0px;
+	}
+	.testimonial-carousel .owl-dots {
+		display: none;
+	}
+
+	.big-feature-item p {
+		font-size: 60px;
+	}
+	.big-feature-item .item-content {
+		width: 100%;
+		display: table;
+		padding-top: 0px;
+		text-align: center;
+	}
+	.big-feature-item p sup {
+		font-size: 26px;
+	}
+	.product-carousel-2 .owl-nav {
+		top: 40px;
+		left: 0px;
+		right: 0px;
+		position: absolute;
+	}
+	.product-carousel-2 .owl-nav .owl-prev,
+	.product-carousel-2 .owl-nav .owl-next {
+		&:before {
+			font-size: 24px;
+		}
+	}
+	.product-carousel-2 .item h4 {
+		margin-bottom: 40px;
+	}
+	/* home - end */
+
+}
+
+/* ====================================================================================================
+7 - media screen and (max-width: 580px) - end
+==================================================================================================== */
+
+
+
+
+
+/* ====================================================================================================
+8 - media screen and (max-width: 480px) - start
+==================================================================================================== */
+
+@media screen and (max-width: 480px) {}
+
+/* ====================================================================================================
+8 - media screen and (max-width: 480px) - end
+==================================================================================================== */
+
+
+
+
+
+/* ====================================================================================================
+9 - media screen and (max-width: 320px) - start
+==================================================================================================== */
+
+@media screen and (max-width: 320px) {}
+
+/* ====================================================================================================
+9 - media screen and (max-width: 320px) - end
+==================================================================================================== */
