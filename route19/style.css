@@ -10,10 +10,16 @@ body {
 #map {
 	height: 100%;
 	width: 100%;
-	max-width: 650px;
-	left: auto;
-	right: auto;
-	margin: auto;
+}
+
+@media (min-device-width: 800px) {
+	#map {
+		max-width: 650px;
+		left: auto;
+		right: auto;
+		margin: auto;
+		box-shadow: 0 0 50px rgba(0,0,0,0.5);
+	}
 }
 
 .stopMarker {
