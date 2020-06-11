@@ -52,7 +52,6 @@ body {
 }
 
 #bottomUI {
-	display: none;
 	position: absolute;
 	left: 13px;
 	right: 13px;

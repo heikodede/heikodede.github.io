@@ -20,8 +20,8 @@ function getUrlVars() {
 }
 
 (function() {
-	if (getUrlVars()["showUI"] == "true") {
-		$("#bottomUI").show();
+	if (getUrlVars()["showUI"] == "false") {
+		$("#bottomUI").hide();
 	}
 })();
 
