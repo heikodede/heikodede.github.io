@@ -10,6 +10,21 @@ $("#pauseBtn").click(function() {
 	}
 });
 
+function getUrlVars() {
+    var vars = {};
+    var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi,    
+    function(m,key,value) {
+      vars[key] = value;
+    });
+    return vars;
+}
+
+(function() {
+	if (getUrlVars()["showUI"] == "true") {
+		$("#bottomUI").show();
+	}
+})();
+
 
 (function() {
 		mapboxgl.accessToken = 'pk.eyJ1IjoiaGVpa29kZSIsImEiOiJjazRlNmpkYTIwOXRiM25vM3o0bnpkcDUwIn0.n5uKXIwegkQnozYiCbmEIw';
