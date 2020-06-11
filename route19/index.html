@@ -17,10 +17,17 @@
 <html>
 <header>
 	<link href='https://api.mapbox.com/mapbox-gl-js/v1.4.1/mapbox-gl.css' rel='stylesheet' />
+	<link href='assets/fontawesome/css/all.min.css' rel='stylesheet' />
 	<link href='style.css' rel='stylesheet' />
 </header>
 <body>
-	<div id='map'></div>
+	<div id='map'>
+		<div id='pauseBtn' class="paused">
+			<i class="fas fa-pause fa-2x"></i>
+			<i style="display: none;" class="fas fa-play fa-2x"></i>
+		</div>
+		<div id='mapContainer'></div>
+	</div>
 
 	<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 	<script src='https://api.mapbox.com/mapbox-gl-js/v1.4.1/mapbox-gl.js'></script>

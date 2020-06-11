@@ -1,7 +1,20 @@
+var isPaused = true;
 
+$("#pauseBtn").click(function() {
+	if ($("#pauseBtn").hasClass("paused")) {
+		isPaused = false;
+		$("#pauseBtn").removeClass("paused");
+	} else {
+		isPaused = true;
+		$("#pauseBtn").addClass("paused");
+	}
+});
+
+
+(function() {
 		mapboxgl.accessToken = 'pk.eyJ1IjoiaGVpa29kZSIsImEiOiJjazRlNmpkYTIwOXRiM25vM3o0bnpkcDUwIn0.n5uKXIwegkQnozYiCbmEIw';
 		var map = new mapboxgl.Map({
-			container: 'map',
+			container: 'mapContainer',
 			style: 'mapbox://styles/mapbox/dark-v10',
 			center: [11.5761, 48.1371],
 			zoom: 12,
@@ -126,9 +139,9 @@
 				correctDirection: true
 			}
 			
-			setTimeout(function() {
-				setInterval(function() {
+			setInterval(function() {
 
+				if (!isPaused) {
 					var nextId;
 					if ((currentStatus.correctDirection && currentStatus.locationId < route.length - 1) || (!currentStatus.correctDirection && currentStatus.locationId == 0)) {
 						nextId = currentStatus.locationId + 1;
@@ -165,9 +178,9 @@
 							currentStatus.locationId--;
 						}
 					} while (route[currentStatus.locationId].type != "stop");
+				}
 
-				}, 5000);
-            }, 3000);
+			}, 5000);
 
 	  });
-	  
+})();
