@@ -19,7 +19,7 @@ body {
 
 @media (min-device-width: 800px) {
 	#map {
-		max-width: 650px;
+		max-width: 475px;
 		left: auto;
 		right: auto;
 		height: calc(100% - 60px);
