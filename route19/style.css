@@ -53,14 +53,14 @@ body {
 	left: 13px;
 	right: 13px;
 	bottom: 0;
-	padding: 20px 25px 25px 25px;
+	padding: 20px 15px 25px 15px;
 	z-index: 5;
 	border-radius: 15px 15px 0 0;
 	background: #1C1C1C;
 	box-shadow: 0 0 15px 0px rgba(0,0,0,0.35);
 	font-family: FuturaBT-Medium;
 	color: rgba(255,255,255,0.6);
-	font-size: 20px;
+	font-size: 19px;
 	text-align: center;
 }
 
@@ -77,15 +77,12 @@ body {
 	cursor: grab;
 }
 
-#bottomUI > p.uiText {
-	margin: 20px 40px;
-}
 
 #bottomUI > button {
 	text-transform: uppercase;
 	background: none;
 	border: 1.5px solid #4285F4;
-	font-size: 16px;
+	font-size: 13px;
 	padding: 8px 14px;
 	border-radius: 14px;
 	color: #4285F4;
@@ -112,7 +109,7 @@ body {
 
 #bottomUI > .bottomInfo {
 	margin-top: 30px;
-	font-size: 12px;
+	font-size: 10px;
 	color: rgba(255,255,255,0.21)
 }
 
@@ -125,18 +122,25 @@ body {
 	display: none;
 }
 
+#bottomBar {
+	display: none;
+}
+
+
 @media (min-device-width: 800px) {
 	#map {
-		max-width: 475px;
+		max-width: 375px;
+		max-height: 812px;
 		left: auto;
 		right: auto;
 		height: calc(100% - 60px);
-		margin: 30px auto;
+		margin: 50px auto;
 		box-shadow: 0 0 40px rgba(0,0,0,0.35);
 		border-radius: 12px;
 	}
 
 	#bottomBar {
+		display: initial;
 		position: absolute;
 		bottom: 12px;
 		width: 180px;
