@@ -12,6 +12,11 @@ body {
 	width: 100%;
 }
 
+.mapboxgl-ctrl-bottom-left,
+.mapboxgl-ctrl-bottom-right {
+	display: none;
+}
+
 @media (min-device-width: 800px) {
 	#map {
 		max-width: 650px;
