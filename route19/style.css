@@ -130,7 +130,7 @@ body {
 }
 
 
-@media (min-device-width: 800px) {
+@media (min-device-width: 1366px) {
 	#map {
 		max-width: 375px;
 		max-height: 812px;
