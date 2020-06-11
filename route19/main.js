@@ -20,6 +20,10 @@ function getUrlVars() {
 }
 
 (function() {
+	if ("serviceWorker" in navigator) {
+		navigator.serviceWorker.register("sw.js");
+	}
+
 	if (getUrlVars()["showUI"] == "false") {
 		$("#bottomUI").hide();
 	}
