@@ -55,8 +55,21 @@ body {
 		right: auto;
 		height: calc(100% - 60px);
 		margin: 30px auto;
-		box-shadow: 0 0 50px rgba(0,0,0,0.5);
+		box-shadow: 0 0 40px rgba(0,0,0,0.35);
 		border-radius: 12px;
+	}
+
+	#bottomBar {
+		position: absolute;
+		bottom: 12px;
+		width: 200px;
+		height: 6px;
+		background: rgba(255,255,255,0.7);
+		z-index: 10;
+		border-radius: 30px;
+		margin: auto;
+		left: 0;
+		right: 0;
 	}
 }
 
