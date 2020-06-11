@@ -1,5 +1,10 @@
 var isPaused = true;
 
+var currentStatus = {
+	locationId: 0,
+	correctDirection: true
+}
+
 $("#pauseBtn").click(function() {
 	if ($("#pauseBtn").hasClass("paused")) {
 		isPaused = false;
@@ -43,14 +48,15 @@ function getUrlVars() {
 		map.addControl(new mapboxgl.NavigationControl());
 
 		map.addControl(
-		new mapboxgl.GeolocateControl({
-			positionOptions: {
-				enableHighAccuracy: true
-			},
-			trackUserLocation: true
-		})
+			new mapboxgl.GeolocateControl({
+				positionOptions: {
+					enableHighAccuracy: true
+				},
+				trackUserLocation: true
+			})
         );
-        
+		
+		//map erstellen
 		map.on('load', function() {
 			var routeCoordinates = [];
 
@@ -150,13 +156,87 @@ function getUrlVars() {
                 .setPopup(new mapboxgl.Popup({ offset: 25 }) // add popups
                     .setHTML('<h3>' + marker.properties.title + '</h3>'))
                 .addTo(map);
-        });
+		});
+
+		$("#bottomUI > button").click(function() {
+			navigator.geolocation.getCurrentPosition(function(position){
+				var myPos = {
+					lat: position.coords.latitude,
+					lon: position.coords.longitude 
+				};
+
+				var nearestStop = {
+					locationId: undefined,
+					item: undefined,
+					distance: undefined
+				};
+
+				route.forEach( (item, index) => {
+					if (item.type == "stop") {
+						if (typeof nearestStop.item == 'undefined') {
+							nearestStop.item = item;
+							nearestStop.locationId = index;
+							nearestStop.distance = distance(myPos.lat, myPos.lon, item.lat, item.lon);
+						} else {
+							if ( distance(myPos.lat, myPos.lon, item.lat, item.lon) < nearestStop.distance ) {
+								nearestStop.item = item;
+								nearestStop.locationId = index;
+								nearestStop.distance = distance(myPos.lat, myPos.lon, item.lat, item.lon);
+							}
+						}
+					}
+				});
+
+				currentStatus.locationId = nearestStop.locationId;
+				getRouting(myPos.lat, myPos.lon, nearestStop.item.lat, nearestStop.item.lon).then( (routeToStop) => {
+					console.log(routeToStop);
+					//neue Layer mit Routenlinie
+					map.addLayer({
+						id: 'routeToStop',
+						type: 'line',
+						source: {
+							type: 'geojson',
+							data: {
+								type: 'Feature',
+								properties: {},
+								geometry: {
+									type: 'LineString',
+									coordinates: routeToStop.geometry.coordinates
+								}
+							}
+						},
+						layout: {
+							'line-join': 'round',
+							'line-cap': 'round'
+						},
+						minzoom: 12,
+						paint: {
+							'line-color': 'rgba(66,133,244,0.3)',
+							'line-width': 8
+						}
+					});
+
+					var bearingAngle = bearing(myPos.lat, myPos.lon, routeToStop.geometry.coordinates[1][1], routeToStop.geometry.coordinates[1][0]);
+					map.flyTo({
+						center: [
+							myPos.lon,
+							myPos.lat
+						],
+						pitch: 60,
+						bearing: bearingAngle,
+						zoom: 18
+					});
+				});
+
+
+			}, function(error) {
+				alert("unable to retrieve location");
+			});
+		});
+
 		
+		//autoplay through stations
 		$( document ).ready(function() {
-			var currentStatus = {
-				locationId: 0,
-				correctDirection: true
-			}
 			
 			setInterval(function() {
 
