@@ -7,6 +7,7 @@ var mapSingleton = (function () {
 
         var prvt_map;
         var prvt_state = {
+            userInteractions: false,
             position: undefined,
             defaultLayers: {
                 buildings3d: undefined,
@@ -185,15 +186,25 @@ var mapSingleton = (function () {
             });
         }
 
-        function prvt_disableUserInteractions() {
-            // disable user manipulations
-            prvt_map.dragRotate.disable();
-            prvt_map.dragPan.disable();
-            prvt_map.keyboard.disable();
-            prvt_map.doubleClickZoom.disable();
-            prvt_map.scrollZoom.disable();
-            prvt_map.boxZoom.disable();
-            prvt_map.touchZoomRotate.disable();
+        function prvt_setUserInteractions(userInteractions) {
+            if (userInteractions == false) {
+                prvt_map.dragRotate.disable();
+                prvt_map.dragPan.disable();
+                prvt_map.keyboard.disable();
+                prvt_map.doubleClickZoom.disable();
+                prvt_map.scrollZoom.disable();
+                prvt_map.boxZoom.disable();
+                prvt_map.touchZoomRotate.disable();
+            } else {
+                prvt_map.dragRotate.enable();
+                prvt_map.dragPan.enable();
+                prvt_map.keyboard.enable();
+                prvt_map.doubleClickZoom.enable();
+                prvt_map.scrollZoom.enable();
+                prvt_map.boxZoom.enable();
+                prvt_map.touchZoomRotate.enable();
+            }
+
         }
 
         //create new map when init
@@ -210,7 +221,7 @@ var mapSingleton = (function () {
             prvt_map.on('load', function() {
                 prvt_addBuildings3d();
                 //prvt_addControls();
-                prvt_disableUserInteractions();
+                prvt_setUserInteractions(prvt_state.userInteractions);
 
                 prvt_addLine({id: "tramRoute", route: route, transform: true});
                 
