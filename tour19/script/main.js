@@ -4,12 +4,12 @@ $("#bottomUI > button").click(function() {
 	tourInstance.guideToEntryStop();
     setInterval(function() {
 		tourInstance.guideToEntryStop();
-	}, 15000);
+	}, 10000);
 	
 
     setInterval(function() {
 		tourInstance.updateLocation();
-    }, 100);
+    }, 500);
 });
 
 

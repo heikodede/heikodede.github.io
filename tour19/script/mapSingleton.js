@@ -9,6 +9,7 @@ var mapSingleton = (function () {
         var prvt_state = {
             userInteractions: true,
             position: undefined,
+            positionHistory: [], 
             defaultLayers: {
                 buildings3d: undefined,
                 positionMarker: undefined
@@ -176,10 +177,30 @@ var mapSingleton = (function () {
             return new Promise((resolve, reject) => {
                 navigator.geolocation.getCurrentPosition(function(position){
 
-                    //maybe mit .toFixed(5) auf vier Nachkommastellen runden, damit es nicht so wiggled?
+                    //maximum size of 10 last positions
+                    if (positionHistory.length >= 10) {
+                        positionHistory.pop();
+                    }
+                    //add at beginning of array
+                    positionHistory.unshift({
+                        lat: position.coords.latitude,
+                        lon: position.coords.longitude
+                    });
+
+                    
+                    positionHistory.reduce();
+
+                    var avgLat = positionHistory.reduce(function (sumLat, pos) {
+                        return sumLat + pos.lat;
+                    }, 0) / positionHistory.length;
+
+                    var avgLon = positionHistory.reduce(function (sumLon, pos) {
+                        return sumLon + pos.lon;
+                    }, 0) / positionHistory.length;
+
                     prvt_state.position = {
-                        lat: position.coords.latitude.toFixed(4),
-                        lon: position.coords.longitude.toFixed(4)
+                        lat: avgLat,
+                        lon: avgLon
                     };
 
                     if (prvt_state.defaultLayers.positionMarker) {
@@ -262,7 +283,8 @@ var mapSingleton = (function () {
             state: prvt_state,
             addLine: prvt_addLine,
             flyTo: prvt_flyTo,
-            updateLocation: prvt_updateLocation
+            updateLocation: prvt_updateLocation,
+            mapForTest: prvt_map
         };
 
     };

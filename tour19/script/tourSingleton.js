@@ -76,7 +76,8 @@ var tourSingleton = (function () {
             nextTramStation: prvt_nextTramStation,
             togglePause: prvt_togglePause,
             guideToEntryStop: prvt_guideToEntryStop,
-            updateLocation: prvt_mapInstance.updateLocation
+            updateLocation: prvt_mapInstance.updateLocation,
+            mapForTest: prvt_mapInstance.mapForTest
         };
 
     };
