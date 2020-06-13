@@ -13,7 +13,8 @@ var mapSingleton = (function () {
                 buildings3d: undefined,
                 positionMarker: undefined
             },
-            lastLookAt: undefined
+            lastLookAt: undefined,
+            currentPosition: undefined
         };
 
         function prvt_addBuildings3d() {
@@ -148,16 +149,27 @@ var mapSingleton = (function () {
                 prvt_state.lastLookAt = settings.lookAt;
             }
 
-            var bearingAngle = bearing(settings.center.lat, settings.center.lon, settings.lookAt.lat, settings.lookAt.lon);
-            prvt_map.flyTo({
-                center: [
-                    settings.center.lon,
-                    settings.center.lat
-                ],
-                pitch: 60,
-                bearing: bearingAngle,
-                zoom: 18
-            });
+            
+
+            //abbrechen, wenn Positionsänderung zu gering, danut wiggle verhindert wird
+            if ( typeof prvt_state.currentPosition != "undefined" ) {
+                if ( distance(prvt_state.currentPosition.lat, prvt_state.currentPosition.lon, settings.center.lat, settings.center.lon) < 5 ) {
+                    return;
+                }
+             }
+
+             prvt_state.currentPosition = settings.center;
+
+             var bearingAngle = bearing(settings.center.lat, settings.center.lon, settings.lookAt.lat, settings.lookAt.lon);
+             prvt_map.flyTo({
+                 center: [
+                     settings.center.lon,
+                     settings.center.lat
+                 ],
+                 pitch: 60,
+                 bearing: bearingAngle,
+                 zoom: 18
+             });
         }
 
         function prvt_updateLocation() {
