@@ -7,7 +7,7 @@ var mapSingleton = (function () {
 
         var prvt_map;
         var prvt_state = {
-            userInteractions: false,
+            userInteractions: true,
             position: undefined,
             defaultLayers: {
                 buildings3d: undefined,
