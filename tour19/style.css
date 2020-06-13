@@ -1,7 +1,7 @@
 @font-face {
 	font-family: 'FuturaBT-Medium';
 	/*src: url('https://cdn.jsdelivr.net/npm/futura-font@1.0.0/FuturaBT-Medium.woff');*/
-	src: url('assets/Fonts/Futura\ Book\ font.ttf');
+	src: url('lib/Fonts/Futura\ Book\ font.ttf');
 	font-weight: normal;
 	font-style: normal;
   }
@@ -130,6 +130,10 @@ body {
 
 #bottomBar {
 	display: none;
+}
+
+.mapboxgl-user-location-dot {
+	background-color: #4285F4;
 }
 
 

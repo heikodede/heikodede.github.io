@@ -54,51 +54,18 @@ var tourSingleton = (function () {
         }
 
         function prvt_guideToEntryStop() {
-            navigator.geolocation.getCurrentPosition(function(position){
-                var myPos = {
-                    lat: position.coords.latitude,
-                    lon: position.coords.longitude 
-                };
-        
-                var nearestStop = {
-                    locationId: undefined,
-                    item: undefined,
-                    distance: undefined
-                };
-        
-                route.forEach( (item, index) => {
-                    if (item.type == "stop") {
-                        if (typeof nearestStop.item == 'undefined') {
-                            nearestStop.item = item;
-                            nearestStop.locationId = index;
-                            nearestStop.distance = distance(myPos.lat, myPos.lon, item.lat, item.lon);
-                        } else {
-                            if ( distance(myPos.lat, myPos.lon, item.lat, item.lon) < nearestStop.distance ) {
-                                nearestStop.item = item;
-                                nearestStop.locationId = index;
-                                nearestStop.distance = distance(myPos.lat, myPos.lon, item.lat, item.lon);
-                            }
-                        }
-                    }
-                });
-        
-                tourInstance.state.tram.locationId = nearestStop.locationId;
-                getRouting(myPos.lat, myPos.lon, nearestStop.item.lat, nearestStop.item.lon).then( (routeToStop) => {
-                    //neue Layer mit Routenlinie
-
-                    prvt_mapInstance.addLine({id: "routeToEntryStop", route: routeToStop.geometry.coordinates});
+            prvt_mapInstance.updateLocation().then( (position) => {
+                routeToNearestStop(position).then( (nearestStop) => {
+                    tourInstance.state.tram.locationId = nearestStop.stop.locationId;
+                    prvt_mapInstance.addLine({id: "routeToEntryStop", route: nearestStop.route.geometry.coordinates, unique: true});
                     prvt_mapInstance.flyTo({
-                        center: myPos,
+                        center: position,
                         lookAt: {
-                            lon: routeToStop.geometry.coordinates[1][0],
-                            lat: routeToStop.geometry.coordinates[1][1]
+                            lon: nearestStop.route.geometry.coordinates[1][0],
+                            lat: nearestStop.route.geometry.coordinates[1][1]
                         }
                     });
                 });
-        
-        
-            }, function(error) {
-                alert("unable to retrieve location");
             });
         }
 
@@ -108,7 +75,8 @@ var tourSingleton = (function () {
             state: prvt_state,
             nextTramStation: prvt_nextTramStation,
             togglePause: prvt_togglePause,
-            guideToEntryStop: prvt_guideToEntryStop
+            guideToEntryStop: prvt_guideToEntryStop,
+            updateLocation: prvt_mapInstance.updateLocation
         };
 
     };

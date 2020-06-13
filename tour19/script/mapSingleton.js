@@ -7,10 +7,12 @@ var mapSingleton = (function () {
 
         var prvt_map;
         var prvt_state = {
+            position: undefined,
             defaultLayers: {
-                buildings3d: false,
-                controls: false
-            }
+                buildings3d: undefined,
+                positionMarker: undefined
+            },
+            lastLookAt: undefined
         };
 
         function prvt_addBuildings3d() {
@@ -31,25 +33,25 @@ var mapSingleton = (function () {
                 'source-layer': 'building',
                 filter: ['==', 'extrude', 'true'],
                 type: 'fill-extrusion',
-                minzoom: 13,
+                minzoom: 15,
                 paint: {
                     'fill-extrusion-color': '#666',
                     'fill-extrusion-height': [
                         'interpolate',
                         ['linear'],
                         ['zoom'],
-                        13,
+                        15,
                         0,
-                        17,
+                        15.05,
                         ['get', 'height']
                     ],
                     'fill-extrusion-base': [
                         'interpolate',
                         ['linear'],
                         ['zoom'],
-                        13,
+                        15,
                         0,
-                        17,
+                        15.05,
                         ['get', 'min_height']
                     ],
                     'fill-extrusion-opacity': 0.6
@@ -82,6 +84,10 @@ var mapSingleton = (function () {
                 finalCoords = settings.route;
             }
 
+            if (settings.unique) {
+                prvt_removeLayer([settings.id]);
+            }
+
             //neue Layer mit Routenlinie
             prvt_map.addLayer({
                 id: settings.id,
@@ -109,21 +115,38 @@ var mapSingleton = (function () {
             });
         }
 
-        function prvt_addPOIs(settings) {
-            //Marker inkl. Popup hinzufügen
-            settings.geoJson.features.forEach(function(marker) {
-                var el = document.createElement('div');
-                el.className = settings.className;
+        function prvt_addMarker(settings) {
+            var el = document.createElement('div');
+            el.className = settings.className;
+            var newMarker = new mapboxgl.Marker(el).setLngLat(settings.coord);
 
-                new mapboxgl.Marker(el)
-                    .setLngLat(marker.geometry.coordinates)
-                    .setPopup(new mapboxgl.Popup({ offset: 25 }) // add popups
-                        .setHTML('<h3>' + marker.properties.title + '</h3>'))
-                    .addTo(prvt_map);
-            });
+            if (settings.title && settings.title.use)  {
+                newMarker.setPopup(new mapboxgl.Popup({ offset: 25 }) // add popups
+                .setHTML('<h3>' + settings.title.text + '</h3>'));
+            }
+            return newMarker.addTo(prvt_map);
+        }
+
+        function prvt_removeLayer(layerIdArray) {
+            layerIdArray.forEach( (layerId) => {
+                if (typeof layerId != "undefined" && prvt_map.getLayer(layerId)) {
+                    prvt_map.removeLayer(layerId);
+                    prvt_map.removeSource(layerId);
+                }
+            })
         }
 
         function prvt_flyTo(settings) {
+            if (typeof settings.lookAt == "undefined") {
+                if (typeof prvt_state.lastLookAt == "undefined") {
+                    return;
+                } else {
+                    settings.lookAt = prvt_state.lastLookAt;
+                }
+            } else {
+                prvt_state.lastLookAt = settings.lookAt;
+            }
+
             var bearingAngle = bearing(settings.center.lat, settings.center.lon, settings.lookAt.lat, settings.lookAt.lon);
             prvt_map.flyTo({
                 center: [
@@ -133,6 +156,31 @@ var mapSingleton = (function () {
                 pitch: 60,
                 bearing: bearingAngle,
                 zoom: 18
+            });
+        }
+
+        function prvt_updateLocation() {
+            return new Promise((resolve, reject) => {
+                navigator.geolocation.getCurrentPosition(function(position){
+                    prvt_state.position = {
+                        lat: position.coords.latitude,
+                        lon: position.coords.longitude 
+                    };
+
+                    if (prvt_state.defaultLayers.positionMarker) {
+                        prvt_state.defaultLayers.positionMarker.remove();
+                    }
+                    prvt_state.defaultLayers.positionMarker = prvt_addMarker({
+                        className: "mapboxgl-user-location-dot",
+                        coord: [prvt_state.position.lon, prvt_state.position.lat]
+                    });
+
+                    prvt_flyTo({center: prvt_state.position});
+                    resolve(prvt_state.position);
+                }, function(error) {
+                    alert("unable to retrieve location");
+                    reject();
+                });
             });
         }
 
@@ -149,17 +197,34 @@ var mapSingleton = (function () {
 
             prvt_map.on('load', function() {
                 prvt_addBuildings3d();
-                prvt_addControls();
+                //prvt_addControls();
                 prvt_addLine({id: "tramRoute", route: route, transform: true});
-                prvt_addPOIs({geoJson: routeStopsGeoJson, className: 'stopMarker'});
-                prvt_addPOIs({geoJson: poiGeoJson, className: 'poiMarker'});
+                
+                routeStopsGeoJson.features.forEach( (marker) => {
+                    prvt_addMarker({
+                        className: "stopMarker",
+                        coord: marker.geometry.coordinates,
+                        title: {use: true, text: marker.properties.title}
+                    });
+                })
+                
+                poiGeoJson.features.forEach( (marker) => {
+                    prvt_addMarker({
+                        className: "poiMarker",
+                        coord: marker.geometry.coordinates,
+                        title: {use: true, text: marker.properties.title}
+                    });
+                })
+                
             });
         })();
 
         return {
             // Public methods and variables
+            state: prvt_state,
             addLine: prvt_addLine,
-            flyTo: prvt_flyTo
+            flyTo: prvt_flyTo,
+            updateLocation: prvt_updateLocation
         };
 
     };

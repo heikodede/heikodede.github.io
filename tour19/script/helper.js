@@ -41,18 +41,3 @@ function distance(lat1, lon1, lat2, lon2) {
 	}
 }
 
-function getRouting(startLat, startLon, destLat, destLon) {
-    return new Promise((resolve, reject) => {
-        var apiUrl = "https://api.mapbox.com/directions/v5/mapbox/walking/";
-        apiUrl = apiUrl + startLon + "," + startLat + ";" + destLon + "," + destLat;
-        apiUrl = apiUrl + "?alternatives=false&geometries=geojson&steps=true&access_token=pk.eyJ1IjoiaGVpa29kZSIsImEiOiJjazRlNmpkYTIwOXRiM25vM3o0bnpkcDUwIn0.n5uKXIwegkQnozYiCbmEIw";
-    
-        $.getJSON(apiUrl, function( data ) {
-            if (data.code == "Ok") {
-                resolve(data.routes[0]);
-            } else {
-                reject("error");
-            }
-        });
-    });
-}
