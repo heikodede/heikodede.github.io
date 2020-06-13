@@ -178,25 +178,22 @@ var mapSingleton = (function () {
                 navigator.geolocation.getCurrentPosition(function(position){
 
                     //maximum size of 10 last positions
-                    if (positionHistory.length >= 10) {
-                        positionHistory.pop();
+                    if (prvt_state.positionHistory.length >= 10) {
+                        prvt_state.positionHistory.pop();
                     }
                     //add at beginning of array
-                    positionHistory.unshift({
+                    prvt_state.positionHistory.unshift({
                         lat: position.coords.latitude,
                         lon: position.coords.longitude
                     });
 
-                    
-                    positionHistory.reduce();
-
-                    var avgLat = positionHistory.reduce(function (sumLat, pos) {
+                    var avgLat = prvt_state.positionHistory.reduce(function (sumLat, pos) {
                         return sumLat + pos.lat;
-                    }, 0) / positionHistory.length;
+                    }, 0) / prvt_state.positionHistory.length;
 
-                    var avgLon = positionHistory.reduce(function (sumLon, pos) {
+                    var avgLon = prvt_state.positionHistory.reduce(function (sumLon, pos) {
                         return sumLon + pos.lon;
-                    }, 0) / positionHistory.length;
+                    }, 0) / prvt_state.positionHistory.length;
 
                     prvt_state.position = {
                         lat: avgLat,
