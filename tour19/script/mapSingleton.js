@@ -162,9 +162,10 @@ var mapSingleton = (function () {
         function prvt_updateLocation() {
             return new Promise((resolve, reject) => {
                 navigator.geolocation.getCurrentPosition(function(position){
+                    //maybe mit .toFixed(4) auf vier Nachkommastellen runden, damit es nicht so wiggled?
                     prvt_state.position = {
                         lat: position.coords.latitude,
-                        lon: position.coords.longitude 
+                        lon: position.coords.longitude
                     };
 
                     if (prvt_state.defaultLayers.positionMarker) {
@@ -193,8 +194,6 @@ var mapSingleton = (function () {
             prvt_map.scrollZoom.disable();
             prvt_map.boxZoom.disable();
             prvt_map.touchZoomRotate.disable();
-            prvt_map.touchPitch.disable();
-            prvt_map.pitchWithRotate.disable();
         }
 
         //create new map when init
