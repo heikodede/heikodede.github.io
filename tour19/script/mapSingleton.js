@@ -178,8 +178,8 @@ var mapSingleton = (function () {
 
                     //maybe mit .toFixed(5) auf vier Nachkommastellen runden, damit es nicht so wiggled?
                     prvt_state.position = {
-                        lat: position.coords.latitude.toFixed(5),
-                        lon: position.coords.longitude.toFixed(5)
+                        lat: position.coords.latitude.toFixed(4),
+                        lon: position.coords.longitude.toFixed(4)
                     };
 
                     if (prvt_state.defaultLayers.positionMarker) {
