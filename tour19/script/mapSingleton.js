@@ -184,6 +184,19 @@ var mapSingleton = (function () {
             });
         }
 
+        function prvt_disableUserInteractions() {
+            // disable user manipulations
+            prvt_map.dragRotate.disable();
+            prvt_map.dragPan.disable();
+            prvt_map.keyboard.disable();
+            prvt_map.doubleClickZoom.disable();
+            prvt_map.scrollZoom.disable();
+            prvt_map.boxZoom.disable();
+            prvt_map.touchZoomRotate.disable();
+            prvt_map.touchPitch.disable();
+            prvt_map.pitchWithRotate.disable();
+        }
+
         //create new map when init
         (function(){
             mapboxgl.accessToken = 'pk.eyJ1IjoiaGVpa29kZSIsImEiOiJjazRlNmpkYTIwOXRiM25vM3o0bnpkcDUwIn0.n5uKXIwegkQnozYiCbmEIw';
@@ -198,6 +211,8 @@ var mapSingleton = (function () {
             prvt_map.on('load', function() {
                 prvt_addBuildings3d();
                 //prvt_addControls();
+                prvt_disableUserInteractions();
+
                 prvt_addLine({id: "tramRoute", route: route, transform: true});
                 
                 routeStopsGeoJson.features.forEach( (marker) => {
