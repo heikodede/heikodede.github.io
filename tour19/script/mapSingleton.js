@@ -14,6 +14,7 @@ var mapSingleton = (function () {
                 positionMarker: undefined
             },
             lastLookAt: undefined,
+            currentViewPosition: undefined,
             currentPosition: undefined
         };
 
@@ -149,16 +150,15 @@ var mapSingleton = (function () {
                 prvt_state.lastLookAt = settings.lookAt;
             }
 
-            
 
-            //abbrechen, wenn Positionsänderung zu gering, danut wiggle verhindert wird
-            if ( typeof prvt_state.currentPosition != "undefined" ) {
-                if ( distance(prvt_state.currentPosition.lat, prvt_state.currentPosition.lon, settings.center.lat, settings.center.lon) < 5 ) {
+            //abbrechen, wenn Positionsänderung unter 7m, damit wiggle verhindert wird
+            if ( typeof prvt_state.currentViewPosition != "undefined" ) {
+                if ( distance(prvt_state.currentViewPosition.lat, prvt_state.currentViewPosition.lon, settings.center.lat, settings.center.lon) < 7 ) {
                     return;
                 }
              }
 
-             prvt_state.currentPosition = settings.center;
+             prvt_state.currentViewPosition = settings.center;
 
              var bearingAngle = bearing(settings.center.lat, settings.center.lon, settings.lookAt.lat, settings.lookAt.lon);
              prvt_map.flyTo({
@@ -175,10 +175,11 @@ var mapSingleton = (function () {
         function prvt_updateLocation() {
             return new Promise((resolve, reject) => {
                 navigator.geolocation.getCurrentPosition(function(position){
-                    //maybe mit .toFixed(4) auf vier Nachkommastellen runden, damit es nicht so wiggled?
+
+                    //maybe mit .toFixed(5) auf vier Nachkommastellen runden, damit es nicht so wiggled?
                     prvt_state.position = {
-                        lat: position.coords.latitude,
-                        lon: position.coords.longitude
+                        lat: position.coords.latitude.toFixed(5),
+                        lon: position.coords.longitude.toFixed(5)
                     };
 
                     if (prvt_state.defaultLayers.positionMarker) {
