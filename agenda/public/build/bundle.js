@@ -425,17 +425,17 @@ var app = (function () {
     			div4 = element("div");
     			t7 = text(t7_value);
     			attr_dev(div0, "class", "title svelte-1982tx3");
-    			add_location(div0, file, 200, 4, 5720);
+    			add_location(div0, file, 200, 4, 5767);
     			attr_dev(div1, "class", "text svelte-1982tx3");
-    			add_location(div1, file, 201, 4, 5763);
+    			add_location(div1, file, 201, 4, 5810);
     			attr_dev(div2, "class", "textContainer svelte-1982tx3");
-    			add_location(div2, file, 199, 3, 5688);
+    			add_location(div2, file, 199, 3, 5735);
     			attr_dev(div3, "class", "title svelte-1982tx3");
-    			add_location(div3, file, 215, 4, 6356);
+    			add_location(div3, file, 215, 4, 6403);
     			attr_dev(div4, "class", "text svelte-1982tx3");
-    			add_location(div4, file, 216, 4, 6399);
+    			add_location(div4, file, 216, 4, 6446);
     			attr_dev(div5, "class", "textContainer small svelte-1982tx3");
-    			add_location(div5, file, 214, 3, 6318);
+    			add_location(div5, file, 214, 3, 6365);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div2, anchor);
@@ -505,11 +505,11 @@ var app = (function () {
     			div1 = element("div");
     			div1.textContent = "The meeting has already ended.";
     			attr_dev(div0, "class", "title svelte-1982tx3");
-    			add_location(div0, file, 195, 4, 5550);
+    			add_location(div0, file, 195, 4, 5597);
     			attr_dev(div1, "class", "text svelte-1982tx3");
-    			add_location(div1, file, 196, 4, 5608);
+    			add_location(div1, file, 196, 4, 5655);
     			attr_dev(div2, "class", "textContainer svelte-1982tx3");
-    			add_location(div2, file, 194, 3, 5518);
+    			add_location(div2, file, 194, 3, 5565);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div2, anchor);
@@ -563,11 +563,11 @@ var app = (function () {
     			if (if_block) if_block.c();
     			if_block_anchor = empty();
     			attr_dev(div0, "class", "title svelte-1982tx3");
-    			add_location(div0, file, 184, 4, 5093);
+    			add_location(div0, file, 184, 4, 5140);
     			attr_dev(div1, "class", "text svelte-1982tx3");
-    			add_location(div1, file, 185, 4, 5145);
+    			add_location(div1, file, 185, 4, 5192);
     			attr_dev(div2, "class", "textContainer svelte-1982tx3");
-    			add_location(div2, file, 183, 3, 5061);
+    			add_location(div2, file, 183, 3, 5108);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div2, anchor);
@@ -637,11 +637,11 @@ var app = (function () {
     			t2 = text("End in ");
     			t3 = text(t3_value);
     			attr_dev(div0, "class", "title svelte-1982tx3");
-    			add_location(div0, file, 210, 5, 6146);
+    			add_location(div0, file, 210, 5, 6193);
     			attr_dev(div1, "class", "text svelte-1982tx3");
-    			add_location(div1, file, 211, 5, 6199);
+    			add_location(div1, file, 211, 5, 6246);
     			attr_dev(div2, "class", "textContainer secondary svelte-1982tx3");
-    			add_location(div2, file, 209, 4, 6103);
+    			add_location(div2, file, 209, 4, 6150);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div2, anchor);
@@ -692,11 +692,11 @@ var app = (function () {
     			div1 = element("div");
     			t3 = text(t3_value);
     			attr_dev(div0, "class", "title svelte-1982tx3");
-    			add_location(div0, file, 205, 5, 5920);
+    			add_location(div0, file, 205, 5, 5967);
     			attr_dev(div1, "class", "text svelte-1982tx3");
-    			add_location(div1, file, 206, 5, 6027);
+    			add_location(div1, file, 206, 5, 6074);
     			attr_dev(div2, "class", "textContainer secondary svelte-1982tx3");
-    			add_location(div2, file, 204, 4, 5877);
+    			add_location(div2, file, 204, 4, 5924);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div2, anchor);
@@ -747,11 +747,11 @@ var app = (function () {
     			t2 = text(t2_value);
     			t3 = text(" minutes");
     			attr_dev(div0, "class", "title svelte-1982tx3");
-    			add_location(div0, file, 189, 5, 5355);
+    			add_location(div0, file, 189, 5, 5402);
     			attr_dev(div1, "class", "text svelte-1982tx3");
-    			add_location(div1, file, 190, 5, 5400);
+    			add_location(div1, file, 190, 5, 5447);
     			attr_dev(div2, "class", "textContainer small svelte-1982tx3");
-    			add_location(div2, file, 188, 4, 5316);
+    			add_location(div2, file, 188, 4, 5363);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div2, anchor);
@@ -789,7 +789,7 @@ var app = (function () {
     			div = element("div");
     			if (if_block) if_block.c();
     			attr_dev(div, "class", "container svelte-1982tx3");
-    			add_location(div, file, 180, 0, 4974);
+    			add_location(div, file, 180, 0, 5021);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -916,7 +916,7 @@ var app = (function () {
 
     		if (response.ok) {
     			$$invalidate(2, userInput = await response.json());
-    			console.log(userInput);
+    			console.log("fetched from JsonBlob:", userInput);
     		} else {
     			console.log("local fallback used, because blobId is invalid");
 
@@ -1036,7 +1036,7 @@ var app = (function () {
     						}
 
     						let endDate = new Date(eventDate.getTime() + currentAgenda.totalAgendaTimeInSec * 1000);
-    						$$invalidate(1, currentInfo.endTime = `${endDate.getHours()}:${endDate.getMinutes()}`, currentInfo);
+    						$$invalidate(1, currentInfo.endTime = `${zeroPad(endDate.getHours(), 2)}:${zeroPad(endDate.getMinutes(), 2)}`, currentInfo);
     					}
     				}
 
