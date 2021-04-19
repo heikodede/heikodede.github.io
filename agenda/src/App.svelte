@@ -169,7 +169,7 @@
 					}
 					
 					let endDate = new Date(eventDate.getTime() + ( (currentAgenda.totalAgendaTimeInSec) * 1000 ));
-					currentInfo.endTime = `${endDate.getHours()}:${endDate.getMinutes()}`;
+					currentInfo.endTime = `${zeroPad(endDate.getHours(),2)}:${zeroPad(endDate.getMinutes(),2)}`;
 				}
 			}
 			dataReady = true;
