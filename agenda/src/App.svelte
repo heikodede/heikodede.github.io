@@ -34,7 +34,7 @@
 		const response = await fetch(`https://jsonblob.com/api/jsonBlob/${blobId}`);
 		if (response.ok) {
 			userInput = await response.json();
-			console.log(userInput);
+			console.log("fetched from JsonBlob:",userInput);
 		} else {
 			console.log("local fallback used, because blobId is invalid")
 			userInput = {
